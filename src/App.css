@@ -1,42 +1,32 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+:root{ --bg:#0b1220; --panel:#071226; --accent:#4f8cff; --muted:#9fb0d8 }
+
+*{ box-sizing:border-box }
+
+body{
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  margin:0; background:var(--bg); color:#e6eef8; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
+.app{ padding:24px; max-width:980px; margin:0 auto }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+header h1{ margin:0 0 6px }
+header p{ margin:0 0 18px; color:var(--muted) }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
+.picker{ display:flex; gap:20px }
+.deck{ display:grid; grid-template-columns: repeat(13, 1fr); gap:8px; flex:1 }
+.card{ background:var(--panel); border:1px solid rgba(255,255,255,0.03); border-radius:6px; padding:10px; color:inherit; text-align:center }
+.card .rank{ display:block; font-weight:600 }
+.card .suit{ display:block; font-size:18px; margin-top:6px }
+.card.selected{ outline:3px solid var(--accent); transform:translateY(-2px); }
+.card:hover{ transform:translateY(-2px); transition:transform .12s }
 
-.card {
-  padding: 2em;
-}
+.summary{ width:220px; background:rgba(255,255,255,0.02); border-radius:8px; padding:12px }
+.summary h2{ margin:0 0 8px }
+.summary p{ color:var(--muted) }
+.summary ul{ margin:8px 0; padding-left:18px }
+.actions{ margin-top:12px }
+.actions button{ background:transparent; color:var(--accent); border:1px solid rgba(79,140,255,0.12); padding:6px 10px; border-radius:6px }
 
-.read-the-docs {
-  color: #888;
-}
+footer{ margin-top:18px; color:var(--muted) }
