@@ -1,0 +1,30 @@
+2026-02-20T03:55:43Z - cron_time_check started
+Fetched timeapi.io UTC: 2026-02-20T03:55:43.3140294 (parsed seconds=1771559743.314)
+System UTC (date -u +%s): 1771559744
+Computed difference: 1 second
+|diff| <= 60s -> no timedatectl actions required
+No further action taken.
+cron_time_check completed
+$(date -u --rfc-3339=seconds) UTC - cron_time_check started
+System UTC epoch: 1771560074.433
+TimeAPI.io UTC epoch: 1771560066.869
+Difference (seconds): 7.564
+Action taken: none (difference <= 60s)
+cron_time_check completed
+=== cron_time_check run at 2026-02-20T04:05:20+00:00 UTC ===
+API time: 2026-02-20T03:55:43.3140294 (from timeapi.io)
+System time before remediate: 2026-02-20T04:05:20+00:00 UTC
+System epoch and API epoch (seconds):  
+Absolute diff before remediate: 0 seconds
+Running timedatectl set-ntp false
+Failed to set ntp: Interactive authentication required.
+Running timedatectl set-ntp true
+Failed to set ntp: Interactive authentication required.
+Waiting 5s for NTP to settle
+System epoch after remediate: 1771560326
+Absolute diff after remediate: 583 seconds
+Diff still >60s, running openclaw doctor --fix
+/bin/bash: line 1: openclaw: command not found
+openclaw doctor command failed or not found
+Run finished at 2026-02-20T04:05:26+00:00 UTC
+
