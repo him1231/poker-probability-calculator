@@ -135,6 +135,20 @@ export default function App(){
         <aside className="summary">
           <h2>{target ? `Active: ${target.area} #${target.index+1}` : 'Active: none'}</h2>
           <p>Used cards: {[...hole, ...community].filter(Boolean).map(c=>c.code).join(', ') || 'None'}</p>
+          <div className="best-hand">
+            <h3>Best hand</h3>
+            {(() => {
+              const all = [...hole, ...community].filter(Boolean)
+              const best = bestHand(all)
+              if(!best) return <p className="muted">No cards yet</p>
+              return (
+                <div>
+                  <strong>{best.name}</strong>
+                  <div className="hand-cards">{best.cards.map(code => <span key={code} className="mini-card">{code}</span>)}</div>
+                </div>
+              )
+            })()}
+          </div>
           <div className="actions">
             <button onClick={clearAll}>Clear board</button>
           </div>

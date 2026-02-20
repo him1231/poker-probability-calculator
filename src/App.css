@@ -37,10 +37,24 @@ header p{ margin:0 0 18px; color:var(--muted) }
 .card.disabled{ opacity:0.28; pointer-events:none }
 .card:hover{ transform:translateY(-2px); transition:transform .12s }
 
-.summary{ width:220px; background:rgba(255,255,255,0.02); border-radius:8px; padding:12px }
+.summary{ width:260px; background:rgba(255,255,255,0.02); border-radius:8px; padding:12px }
 .summary h2{ margin:0 0 8px }
 .summary p{ color:var(--muted) }
+.best-hand{ margin:8px 0 }
+.best-hand .hand-cards{ margin-top:6px }
+.mini-card{ display:inline-block; background:var(--panel); border:1px solid rgba(255,255,255,0.04); padding:6px 8px; border-radius:6px; margin-right:6px }
 .actions{ margin-top:12px }
 .actions button{ background:transparent; color:var(--accent); border:1px solid rgba(79,140,255,0.12); padding:6px 10px; border-radius:6px }
 
 footer{ margin-top:18px; color:var(--muted) }
+
+/* responsive tweaks for mobile */
+@media (max-width: 600px){
+  .deck{ grid-template-columns: repeat(7, 1fr) }
+  .board{ flex-direction:column }
+  .summary{ width:100% }
+}
+
+@media (max-width: 420px){
+  .deck{ grid-template-columns: repeat(4, 1fr) }
+}
