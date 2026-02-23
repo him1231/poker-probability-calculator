@@ -215,13 +215,15 @@ export default function App(){
       </section>
 
       <section className="picker">
-        <div className="deck">
-          {deck.map(card => {
-            const used = isCardUsed(card)
-            return (
-              <CardButton key={card.code} card={card} onClick={(c)=> placeCard(c)} disabled={used} />
-            )
-          })}
+        <div className="deck-scroll">
+          <div className="deck">
+            {deck.map(card => {
+              const used = isCardUsed(card)
+              return (
+                <CardButton key={card.code} card={card} onClick={(c)=> placeCard(c)} disabled={used} />
+              )
+            })}
+          </div>
         </div>
 
         <aside className="summary">

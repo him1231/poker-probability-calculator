@@ -30,7 +30,8 @@ header p{ margin:0 0 18px; color:var(--muted) }
 .community{ flex:1 }
 
 .picker{ display:flex; flex-direction:column; gap:16px; margin-top:18px }
-.deck{ display:grid; grid-template-columns: repeat(13, 1fr); gap:8px; width:100% }
+.deck-scroll{ width:100%; overflow-x:auto }
+.deck{ display:grid; grid-template-columns: repeat(13, minmax(56px, 1fr)); gap:8px; width:100% }
 .card{ background:var(--panel); border:1px solid rgba(255,255,255,0.03); border-radius:6px; padding:10px; color:inherit; text-align:center }
 .card .rank{ display:block; font-weight:600 }
 .card .suit{ display:block; font-size:18px; margin-top:6px }
@@ -63,7 +64,6 @@ footer{ margin-top:18px; color:var(--muted) }
   .slot{ min-width:72px; min-height:52px }
   .deck{
     grid-template-columns: repeat(13, minmax(44px, 1fr));
-    overflow-x:auto;
     padding-bottom:6px;
   }
   .card{ padding:8px }
