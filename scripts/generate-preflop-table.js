@@ -14,6 +14,7 @@ const HAND_NAME_MAP = {
   'high card': 'High Card',
   'one pair': 'One Pair',
   'two pair': 'Two Pair',
+  'two pairs': 'Two Pair',
   'three of a kind': 'Three of a Kind',
   'straight': 'Straight',
   'flush': 'Flush',
