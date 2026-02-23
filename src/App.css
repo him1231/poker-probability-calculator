@@ -31,7 +31,7 @@ header p{ margin:0 0 18px; color:var(--muted) }
 .community{ flex:1 }
 
 .picker{ display:flex; flex-direction:column; gap:16px; margin-top:18px; overflow-x:hidden }
-.deck-scroll{ width:100%; max-width:100vw; overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling: touch }
+.deck-scroll{ width:100%; max-width:calc(100vw - 20px); overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling: touch }
 .deck{ display:grid; grid-template-columns: repeat(13, minmax(56px, 1fr)); gap:8px; width:max-content }
 .card{ background:var(--panel); border:1px solid rgba(255,255,255,0.03); border-radius:6px; padding:10px; color:inherit; text-align:center }
 .card .rank{ display:block; font-weight:600 }
@@ -61,7 +61,7 @@ footer{ margin-top:18px; color:var(--muted) }
 
 /* responsive tweaks for mobile */
 @media (max-width: 600px){
-  .app{ padding:14px; max-width:100% }
+  .app{ padding:14px 10px; max-width:100% }
   .board{ flex-direction:column }
   .slot-row, .community-row{ overflow-x:auto; -webkit-overflow-scrolling: touch; max-width:100% }
   .slot{ min-width:72px; min-height:52px }
