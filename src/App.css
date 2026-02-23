@@ -43,6 +43,15 @@ header p{ margin:0 0 18px; color:var(--muted) }
 .best-hand{ margin:8px 0 }
 .best-hand .hand-cards{ margin-top:6px }
 .mini-card{ display:inline-block; background:var(--panel); border:1px solid rgba(255,255,255,0.04); padding:6px 8px; border-radius:6px; margin-right:6px }
+
+.winrate, .best-possible, .hand-prob{ margin-top:12px }
+.rates{ display:grid; grid-template-columns: 1fr; gap:4px; font-size:14px }
+.muted.small{ font-size:12px }
+.hand-prob ul{ list-style:none; padding:0; margin:6px 0 0 }
+.hand-prob li{ display:flex; justify-content:space-between; padding:3px 0; border-bottom:1px dashed rgba(255,255,255,0.06) }
+.hand-prob li:last-child{ border-bottom:none }
+.hand-prob .pct{ color:var(--muted) }
+
 .actions{ margin-top:12px }
 .actions button{ background:transparent; color:var(--accent); border:1px solid rgba(79,140,255,0.12); padding:6px 10px; border-radius:6px }
 

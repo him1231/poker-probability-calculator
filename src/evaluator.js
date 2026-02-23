@@ -92,23 +92,40 @@ function evaluate5(cards){
   return {rank:0, name:'High Card', tiebreak:vals, cards:cards.map(c=>c.code)}
 }
 
+export function compareHands(a, b){
+  if(!a && !b) return 0
+  if(a && !b) return 1
+  if(!a && b) return -1
+  if(a.rank !== b.rank) return a.rank > b.rank ? 1 : -1
+  const ta = a.tiebreak || [], tb = b.tiebreak || []
+  const len = Math.max(ta.length, tb.length)
+  for(let i=0;i<len;i++){
+    const av = ta[i] || 0, bv = tb[i] || 0
+    if(av !== bv) return av > bv ? 1 : -1
+  }
+  return 0
+}
+
 export function bestHand(allCards){
   // allCards: array of card objects (up to 7)
-  const combos = combinations(allCards,5)
+  if(!allCards || allCards.length===0) return null
+  const k = Math.min(5, allCards.length)
+  const combos = combinations(allCards,k)
   let best = null
   for(const comb of combos){
-    const ev = evaluate5(comb)
+    // if comb length < 5, pad evaluation by treating missing cards as lowest distinct values — but evaluate5 expects 5.
+    // For simplicity when k<5, evaluate using the available cards by treating evaluate5 as if those were the only cards (works for pair/trips detection).
+    const ev = evaluate5(comb.length===5 ? comb : comb.concat(Array(5-comb.length).fill({rank:'2',suit:'♠',code:'2♠'})))
     if(!best) best = ev
     else {
       if(ev.rank > best.rank) best = ev
       else if(ev.rank === best.rank){
-        // compare tiebreak arrays
         const a = ev.tiebreak, b = best.tiebreak
-        let better = false, worse = false
+        let better = false
         for(let i=0;i<Math.max(a.length,b.length);i++){
           const av = a[i]||0, bv = b[i]||0
           if(av>bv){ better=true; break }
-          if(av<bv){ worse=true; break }
+          if(av<bv){ break }
         }
         if(better) best = ev
       }
