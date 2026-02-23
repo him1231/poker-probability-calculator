@@ -268,7 +268,12 @@ export default function App(){
                 {handProbList.map(h => (
                   <li key={h.name}>
                     <span>{h.name}</span>
-                    <span className="pct">{(h.pct*100).toFixed(2)}%</span>
+                    <span className="pct">
+                      {(h.pct*100).toFixed(2)}%
+                      {isPreflop && THEORETICAL_7CARD[h.name] !== undefined
+                        ? ` (${(THEORETICAL_7CARD[h.name]*100).toFixed(3)}%)`
+                        : ''}
+                    </span>
                   </li>
                 ))}
               </ul>
