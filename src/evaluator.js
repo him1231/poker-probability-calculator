@@ -107,15 +107,12 @@ export function compareHands(a, b){
 }
 
 export function bestHand(allCards){
-  // allCards: array of card objects (up to 7)
-  if(!allCards || allCards.length===0) return null
-  const k = Math.min(5, allCards.length)
-  const combos = combinations(allCards,k)
+  // allCards: array of card objects (5 to 7)
+  if(!allCards || allCards.length < 5) return null
+  const combos = combinations(allCards, 5)
   let best = null
   for(const comb of combos){
-    // if comb length < 5, pad evaluation by treating missing cards as lowest distinct values — but evaluate5 expects 5.
-    // For simplicity when k<5, evaluate using the available cards by treating evaluate5 as if those were the only cards (works for pair/trips detection).
-    const ev = evaluate5(comb.length===5 ? comb : comb.concat(Array(5-comb.length).fill({rank:'2',suit:'♠',code:'2♠'})))
+    const ev = evaluate5(comb)
     if(!best) best = ev
     else {
       if(ev.rank > best.rank) best = ev

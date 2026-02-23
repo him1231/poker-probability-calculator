@@ -30,7 +30,7 @@ function sampleN(arr, n){
   return out
 }
 
-function simulateOutcomes({hole, community, deck, iterations=6000}){
+function simulateWinRate({hole, community, deck, iterations=6000}){
   const holeCards = hole.filter(Boolean)
   if(holeCards.length < 2) return null
 
@@ -42,11 +42,6 @@ function simulateOutcomes({hole, community, deck, iterations=6000}){
   const remaining = deck.filter(c => !used.find(u => u.code === c.code))
 
   let wins = 0, ties = 0, losses = 0
-  const handCounts = {}
-  let bestRankSeen = -1
-  let bestExample = null
-
-  const addHand = (name) => { handCounts[name] = (handCounts[name] || 0) + 1 }
 
   if(missingCommunity === 0){
     // exact vs random opponent holes
@@ -60,11 +55,6 @@ function simulateOutcomes({hole, community, deck, iterations=6000}){
         if(cmp > 0) wins++
         else if(cmp === 0) ties++
         else losses++
-        addHand(playerBest.name)
-        if(playerBest.rank > bestRankSeen){
-          bestRankSeen = playerBest.rank
-          bestExample = {name: playerBest.name, needed: []}
-        }
       }
     }
     const total = wins + ties + losses
@@ -72,9 +62,7 @@ function simulateOutcomes({hole, community, deck, iterations=6000}){
       total,
       winRate: total ? wins/total : 0,
       tieRate: total ? ties/total : 0,
-      lossRate: total ? losses/total : 0,
-      handCounts,
-      bestExample
+      lossRate: total ? losses/total : 0
     }
   }
 
@@ -90,12 +78,6 @@ function simulateOutcomes({hole, community, deck, iterations=6000}){
     if(cmp > 0) wins++
     else if(cmp === 0) ties++
     else losses++
-
-    addHand(playerBest.name)
-    if(playerBest.rank > bestRankSeen){
-      bestRankSeen = playerBest.rank
-      bestExample = {name: playerBest.name, needed: missing.map(c => c.code)}
-    }
   }
 
   const total = wins + ties + losses
@@ -103,10 +85,59 @@ function simulateOutcomes({hole, community, deck, iterations=6000}){
     total,
     winRate: total ? wins/total : 0,
     tieRate: total ? ties/total : 0,
-    lossRate: total ? losses/total : 0,
-    handCounts,
-    bestExample
+    lossRate: total ? losses/total : 0
   }
+}
+
+function enumerateHandOdds({hole, community, deck}){
+  const holeCards = hole.filter(Boolean)
+  if(holeCards.length < 2) return null
+
+  const communityCards = community.filter(Boolean)
+  const missingCommunity = 5 - communityCards.length
+  if(missingCommunity < 0) return null
+
+  const used = [...holeCards, ...communityCards]
+  const remaining = deck.filter(c => !used.find(u => u.code === c.code))
+
+  const handCounts = {}
+  let total = 0
+  let bestRankSeen = -1
+  let bestExample = null
+
+  const addHand = (name) => { handCounts[name] = (handCounts[name] || 0) + 1 }
+
+  if(missingCommunity === 0){
+    const playerBest = bestHand([...holeCards, ...communityCards])
+    if(playerBest){
+      addHand(playerBest.name)
+      total = 1
+      bestRankSeen = playerBest.rank
+      bestExample = {name: playerBest.name, needed: []}
+    }
+    return { total, handCounts, bestExample }
+  }
+
+  const comb = []
+  function choose(start, depth){
+    if(depth === missingCommunity){
+      const finalCommunity = communityCards.concat(comb)
+      const playerBest = bestHand([...holeCards, ...finalCommunity])
+      addHand(playerBest.name)
+      total++
+      if(playerBest.rank > bestRankSeen){
+        bestRankSeen = playerBest.rank
+        bestExample = {name: playerBest.name, needed: comb.map(c => c.code)}
+      }
+      return
+    }
+    for(let i=start;i<=remaining.length - (missingCommunity - depth);i++){
+      comb[depth] = remaining[i]
+      choose(i+1, depth+1)
+    }
+  }
+  choose(0, 0)
+  return { total, handCounts, bestExample }
 }
 
 function CardButton({card, onClick, disabled}){
@@ -180,15 +211,16 @@ export default function App(){
     setHole([null,null]); setCommunity([null,null,null,null,null]); setTarget({area:'hole', index:0})
   }
 
-  const sim = useMemo(() => simulateOutcomes({hole, community, deck}), [hole, community, deck])
+  const winSim = useMemo(() => simulateWinRate({hole, community, deck}), [hole, community, deck])
+  const odds = useMemo(() => enumerateHandOdds({hole, community, deck}), [hole, community, deck])
   const handProbList = useMemo(() => {
-    if(!sim) return []
+    if(!odds) return []
     return HAND_ORDER.map(name => {
-      const count = sim.handCounts[name] || 0
-      const pct = sim.total ? (count / sim.total) : 0
+      const count = odds.handCounts[name] || 0
+      const pct = odds.total ? (count / odds.total) : 0
       return {name, count, pct}
     })
-  }, [sim])
+  }, [odds])
 
   return (
     <div className="app">
@@ -251,56 +283,41 @@ export default function App(){
         <aside className="summary">
           <h2>{target ? `Active: ${target.area} #${target.index+1}` : 'Active: none'}</h2>
           <p>Used cards: {[...hole, ...community].filter(Boolean).map(c=>c.code).join(', ') || 'None'}</p>
-          <div className="best-hand">
-            <h3>Best hand</h3>
-            {(() => {
-              const all = [...hole, ...community].filter(Boolean)
-              const best = bestHand(all)
-              if(!best) return <p className="muted">No cards yet</p>
-              return (
-                <div>
-                  <strong>{best.name}</strong>
-                  <div className="hand-cards">{best.cards.map(code => <span key={code} className="mini-card">{code}</span>)}</div>
-                </div>
-              )
-            })()}
-          </div>
-
           <div className="winrate">
             <h3>Win rate (vs 1 random opponent)</h3>
-            {!sim ? (
+            {!winSim ? (
               <p className="muted">Select both hole cards to calculate.</p>
             ) : (
               <div className="rates">
-                <div><strong>{(sim.winRate*100).toFixed(1)}%</strong> Win</div>
-                <div>{(sim.tieRate*100).toFixed(1)}% Tie</div>
-                <div>{(sim.lossRate*100).toFixed(1)}% Lose</div>
+                <div><strong>{(winSim.winRate*100).toFixed(1)}%</strong> Win</div>
+                <div>{(winSim.tieRate*100).toFixed(1)}% Tie</div>
+                <div>{(winSim.lossRate*100).toFixed(1)}% Lose</div>
               </div>
             )}
           </div>
 
           <div className="best-possible">
-            <h3>Highest possible (simulated)</h3>
-            {!sim || !sim.bestExample ? (
+            <h3>Highest possible (exact)</h3>
+            {!odds || !odds.bestExample ? (
               <p className="muted">No data yet.</p>
             ) : (
               <div>
-                <strong>{sim.bestExample.name}</strong>
-                <div className="muted small">Needed: {sim.bestExample.needed.length ? sim.bestExample.needed.join(', ') : 'None'}</div>
+                <strong>{odds.bestExample.name}</strong>
+                <div className="muted small">Needed: {odds.bestExample.needed.length ? odds.bestExample.needed.join(', ') : 'None'}</div>
               </div>
             )}
           </div>
 
           <div className="hand-prob">
-            <h3>Hand odds (simulated)</h3>
-            {!sim ? (
+            <h3>Hand odds (exact)</h3>
+            {!odds ? (
               <p className="muted">Select both hole cards to calculate.</p>
             ) : (
               <ul>
                 {handProbList.map(h => (
                   <li key={h.name}>
                     <span>{h.name}</span>
-                    <span className="pct">{(h.pct*100).toFixed(1)}%</span>
+                    <span className="pct">{(h.pct*100).toFixed(2)}%</span>
                   </li>
                 ))}
               </ul>
