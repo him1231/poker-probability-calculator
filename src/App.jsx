@@ -156,6 +156,7 @@ export default function App(){
   const winSim = calc.win
   const odds = calc.odds
   const isPreflop = community.filter(Boolean).length === 0
+  const preflopKey = isPreflop ? handKey(hole[0], hole[1]) : null
   const handProbList = useMemo(() => {
     if(!odds) return []
     return HAND_ORDER.map(name => {
@@ -226,6 +227,9 @@ export default function App(){
         <aside className="summary">
           <h2>{target ? `Active: ${target.area} #${target.index+1}` : 'Active: none'}</h2>
           <p>Used cards: {[...hole, ...community].filter(Boolean).map(c=>c.code).join(', ') || 'None'}</p>
+          {isPreflop && preflopKey && (
+            <p className="muted small">Preflop key: {preflopKey} · source: {calc.source || '—'}</p>
+          )}
           <div className="winrate">
             <h3>Win rate (vs 1 random opponent)</h3>
             {isPreflop ? (
