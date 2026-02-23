@@ -29,15 +29,15 @@ header p{ margin:0 0 18px; color:var(--muted) }
 
 .community{ flex:1 }
 
-.picker{ display:flex; gap:20px; margin-top:18px }
-.deck{ display:grid; grid-template-columns: repeat(13, 1fr); gap:8px; flex:1 }
+.picker{ display:flex; flex-direction:column; gap:16px; margin-top:18px }
+.deck{ display:grid; grid-template-columns: repeat(13, 1fr); gap:8px; width:100% }
 .card{ background:var(--panel); border:1px solid rgba(255,255,255,0.03); border-radius:6px; padding:10px; color:inherit; text-align:center }
 .card .rank{ display:block; font-weight:600 }
 .card .suit{ display:block; font-size:18px; margin-top:6px }
 .card.disabled{ opacity:0.28; pointer-events:none }
 .card:hover{ transform:translateY(-2px); transition:transform .12s }
 
-.summary{ width:260px; background:rgba(255,255,255,0.02); border-radius:8px; padding:12px }
+.summary{ width:100%; background:rgba(255,255,255,0.02); border-radius:8px; padding:12px }
 .summary h2{ margin:0 0 8px }
 .summary p{ color:var(--muted) }
 .best-hand{ margin:8px 0 }
@@ -61,7 +61,6 @@ footer{ margin-top:18px; color:var(--muted) }
 @media (max-width: 600px){
   .deck{ grid-template-columns: repeat(7, 1fr) }
   .board{ flex-direction:column }
-  .summary{ width:100% }
 }
 
 @media (max-width: 420px){
