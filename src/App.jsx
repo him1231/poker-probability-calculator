@@ -1,9 +1,9 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import './App.css'
-import { bestHand, compareHands } from './evaluator'
 
 const SUITS = ['♠', '♥', '♦', '♣']
 const RANKS = ['A','2','3','4','5','6','7','8','9','10','J','Q','K']
+const KEY_RANKS = ['A','K','Q','J','10','9','8','7','6','5','4','3','2']
 const HAND_ORDER = ['High Card','One Pair','Two Pair','Three of a Kind','Straight','Flush','Full House','Four of a Kind','Straight Flush']
 
 function makeDeck(){
@@ -16,128 +16,13 @@ function makeDeck(){
   return deck
 }
 
-function sampleN(arr, n){
-  const copy = arr.slice()
-  const out = []
-  for(let i=0;i<n;i++){
-    const idx = Math.floor(Math.random() * (copy.length - i))
-    const swapIdx = copy.length - 1 - i
-    const pick = copy[idx]
-    copy[idx] = copy[swapIdx]
-    copy[swapIdx] = pick
-    out.push(pick)
-  }
-  return out
-}
-
-function simulateWinRate({hole, community, deck, iterations=6000}){
-  const holeCards = hole.filter(Boolean)
-  if(holeCards.length < 2) return null
-
-  const communityCards = community.filter(Boolean)
-  const missingCommunity = 5 - communityCards.length
-  if(missingCommunity < 0) return null
-
-  const used = [...holeCards, ...communityCards]
-  const remaining = deck.filter(c => !used.find(u => u.code === c.code))
-
-  let wins = 0, ties = 0, losses = 0
-
-  if(missingCommunity === 0){
-    // exact vs random opponent holes
-    for(let i=0;i<remaining.length;i++){
-      for(let j=i+1;j<remaining.length;j++){
-        const oppHole = [remaining[i], remaining[j]]
-        const finalCommunity = communityCards
-        const playerBest = bestHand([...holeCards, ...finalCommunity])
-        const oppBest = bestHand([...oppHole, ...finalCommunity])
-        const cmp = compareHands(playerBest, oppBest)
-        if(cmp > 0) wins++
-        else if(cmp === 0) ties++
-        else losses++
-      }
-    }
-    const total = wins + ties + losses
-    return {
-      total,
-      winRate: total ? wins/total : 0,
-      tieRate: total ? ties/total : 0,
-      lossRate: total ? losses/total : 0
-    }
-  }
-
-  for(let t=0;t<iterations;t++){
-    const draw = sampleN(remaining, missingCommunity + 2)
-    const oppHole = draw.slice(0,2)
-    const missing = draw.slice(2)
-    const finalCommunity = communityCards.concat(missing)
-
-    const playerBest = bestHand([...holeCards, ...finalCommunity])
-    const oppBest = bestHand([...oppHole, ...finalCommunity])
-    const cmp = compareHands(playerBest, oppBest)
-    if(cmp > 0) wins++
-    else if(cmp === 0) ties++
-    else losses++
-  }
-
-  const total = wins + ties + losses
-  return {
-    total,
-    winRate: total ? wins/total : 0,
-    tieRate: total ? ties/total : 0,
-    lossRate: total ? losses/total : 0
-  }
-}
-
-function enumerateHandOdds({hole, community, deck}){
-  const holeCards = hole.filter(Boolean)
-  if(holeCards.length < 2) return null
-
-  const communityCards = community.filter(Boolean)
-  const missingCommunity = 5 - communityCards.length
-  if(missingCommunity < 0) return null
-
-  const used = [...holeCards, ...communityCards]
-  const remaining = deck.filter(c => !used.find(u => u.code === c.code))
-
-  const handCounts = {}
-  let total = 0
-  let bestRankSeen = -1
-  let bestExample = null
-
-  const addHand = (name) => { handCounts[name] = (handCounts[name] || 0) + 1 }
-
-  if(missingCommunity === 0){
-    const playerBest = bestHand([...holeCards, ...communityCards])
-    if(playerBest){
-      addHand(playerBest.name)
-      total = 1
-      bestRankSeen = playerBest.rank
-      bestExample = {name: playerBest.name, needed: []}
-    }
-    return { total, handCounts, bestExample }
-  }
-
-  const comb = []
-  function choose(start, depth){
-    if(depth === missingCommunity){
-      const finalCommunity = communityCards.concat(comb)
-      const playerBest = bestHand([...holeCards, ...finalCommunity])
-      addHand(playerBest.name)
-      total++
-      if(playerBest.rank > bestRankSeen){
-        bestRankSeen = playerBest.rank
-        bestExample = {name: playerBest.name, needed: comb.map(c => c.code)}
-      }
-      return
-    }
-    for(let i=start;i<=remaining.length - (missingCommunity - depth);i++){
-      comb[depth] = remaining[i]
-      choose(i+1, depth+1)
-    }
-  }
-  choose(0, 0)
-  return { total, handCounts, bestExample }
+function handKey(c1, c2){
+  if(!c1 || !c2) return null
+  if(c1.rank === c2.rank) return c1.rank + c2.rank
+  const order = (r) => KEY_RANKS.indexOf(r)
+  const [high, low] = [c1.rank, c2.rank].sort((a,b)=> order(a) - order(b))
+  const suited = c1.suit === c2.suit ? 's' : 'o'
+  return `${high}${low}${suited}`
 }
 
 function CardButton({card, onClick, disabled}){
@@ -158,6 +43,10 @@ export default function App(){
 
   // active target: 'hole' or 'community' with index; null when none
   const [target, setTarget] = useState({area: 'hole', index: 0})
+
+  const [preflopTable, setPreflopTable] = useState(null)
+  const [calc, setCalc] = useState({win:null, odds:null, loading:false, source:null})
+  const workerRef = useRef(null)
 
   function nextTargetFor(nextHole, nextCommunity, current){
     const order = [
@@ -211,8 +100,51 @@ export default function App(){
     setHole([null,null]); setCommunity([null,null,null,null,null]); setTarget({area:'hole', index:0})
   }
 
-  const winSim = useMemo(() => simulateWinRate({hole, community, deck}), [hole, community, deck])
-  const odds = useMemo(() => enumerateHandOdds({hole, community, deck}), [hole, community, deck])
+  useEffect(() => {
+    fetch('/preflop.json')
+      .then(r => r.json())
+      .then(setPreflopTable)
+      .catch(() => {})
+  }, [])
+
+  useEffect(() => {
+    const worker = new Worker(new URL('./oddsWorker.js', import.meta.url), {type:'module'})
+    workerRef.current = worker
+    worker.onmessage = (e) => {
+      const {win, odds} = e.data
+      setCalc({win, odds, loading:false, source:'worker'})
+    }
+    return () => worker.terminate()
+  }, [])
+
+  useEffect(() => {
+    const holeCards = hole.filter(Boolean)
+    const communityCards = community.filter(Boolean)
+    if(holeCards.length < 2){
+      setCalc({win:null, odds:null, loading:false, source:null})
+      return
+    }
+
+    if(communityCards.length === 0 && preflopTable){
+      const key = handKey(holeCards[0], holeCards[1])
+      const entry = key ? preflopTable[key] : null
+      if(entry){
+        const highest = [...HAND_ORDER].reverse().find(name => (entry.handProbs[name] || 0) > 0)
+        const odds = { total: 1, handCounts: entry.handProbs, bestExample: highest ? {name: highest, needed: []} : null, fromTable:true }
+        const win = { winRate: entry.winRate, tieRate: entry.tieRate, lossRate: entry.lossRate }
+        setCalc({win, odds, loading:false, source:'preflop'})
+        return
+      }
+    }
+
+    if(workerRef.current){
+      setCalc(prev => ({...prev, loading:true, source:'worker'}))
+      workerRef.current.postMessage({hole: holeCards, community: communityCards})
+    }
+  }, [hole, community, preflopTable])
+
+  const winSim = calc.win
+  const odds = calc.odds
   const handProbList = useMemo(() => {
     if(!odds) return []
     return HAND_ORDER.map(name => {
@@ -285,7 +217,9 @@ export default function App(){
           <p>Used cards: {[...hole, ...community].filter(Boolean).map(c=>c.code).join(', ') || 'None'}</p>
           <div className="winrate">
             <h3>Win rate (vs 1 random opponent)</h3>
-            {!winSim ? (
+            {calc.loading ? (
+              <p className="muted">Calculating...</p>
+            ) : !winSim ? (
               <p className="muted">Select both hole cards to calculate.</p>
             ) : (
               <div className="rates">
@@ -297,20 +231,24 @@ export default function App(){
           </div>
 
           <div className="best-possible">
-            <h3>Highest possible (exact)</h3>
-            {!odds || !odds.bestExample ? (
+            <h3>Highest possible {calc.source==='preflop' ? '(lookup)' : '(exact)'}</h3>
+            {calc.loading ? (
+              <p className="muted">Calculating...</p>
+            ) : (!odds || !odds.bestExample ? (
               <p className="muted">No data yet.</p>
             ) : (
               <div>
                 <strong>{odds.bestExample.name}</strong>
                 <div className="muted small">Needed: {odds.bestExample.needed.length ? odds.bestExample.needed.join(', ') : 'None'}</div>
               </div>
-            )}
+            ))}
           </div>
 
           <div className="hand-prob">
-            <h3>Hand odds (exact)</h3>
-            {!odds ? (
+            <h3>Hand odds {calc.source==='preflop' ? '(lookup)' : '(exact)'}</h3>
+            {calc.loading ? (
+              <p className="muted">Calculating...</p>
+            ) : !odds ? (
               <p className="muted">Select both hole cards to calculate.</p>
             ) : (
               <ul>
