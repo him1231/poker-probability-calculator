@@ -5,6 +5,17 @@ const SUITS = ['♠', '♥', '♦', '♣']
 const RANKS = ['A','2','3','4','5','6','7','8','9','10','J','Q','K']
 const KEY_RANKS = ['A','K','Q','J','10','9','8','7','6','5','4','3','2']
 const HAND_ORDER = ['High Card','One Pair','Two Pair','Three of a Kind','Straight','Flush','Full House','Four of a Kind','Straight Flush']
+const THEORETICAL_7CARD = {
+  'High Card': 0.174119,
+  'One Pair': 0.438225,
+  'Two Pair': 0.235173,
+  'Three of a Kind': 0.048298,
+  'Straight': 0.046193,
+  'Flush': 0.030254,
+  'Full House': 0.025961,
+  'Four of a Kind': 0.001681,
+  'Straight Flush': 0.000311
+}
 
 function makeDeck(){
   const deck = []
@@ -131,8 +142,7 @@ export default function App(){
       if(entry){
         const highest = [...HAND_ORDER].reverse().find(name => (entry.handProbs[name] || 0) > 0)
         const odds = { total: 1, handCounts: entry.handProbs, bestExample: highest ? {name: highest, needed: []} : null, fromTable:true }
-        const win = { winRate: entry.winRate, tieRate: entry.tieRate, lossRate: entry.lossRate }
-        setCalc({win, odds, loading:false, source:'preflop'})
+        setCalc({win:null, odds, loading:false, source:'preflop'})
         return
       }
     }
@@ -145,6 +155,7 @@ export default function App(){
 
   const winSim = calc.win
   const odds = calc.odds
+  const isPreflop = community.filter(Boolean).length === 0
   const handProbList = useMemo(() => {
     if(!odds) return []
     return HAND_ORDER.map(name => {
@@ -217,7 +228,9 @@ export default function App(){
           <p>Used cards: {[...hole, ...community].filter(Boolean).map(c=>c.code).join(', ') || 'None'}</p>
           <div className="winrate">
             <h3>Win rate (vs 1 random opponent)</h3>
-            {calc.loading ? (
+            {isPreflop ? (
+              <p className="muted">Preflop: win rate not shown (table shows hand odds only).</p>
+            ) : calc.loading ? (
               <p className="muted">Calculating...</p>
             ) : !winSim ? (
               <p className="muted">Select both hole cards to calculate.</p>
@@ -261,6 +274,21 @@ export default function App(){
               </ul>
             )}
           </div>
+
+          {isPreflop && (
+            <div className="theory-prob">
+              <h3>All-hand theoretical odds (7 cards)</h3>
+              <ul>
+                {HAND_ORDER.map(name => (
+                  <li key={name}>
+                    <span>{name}</span>
+                    <span className="pct">{(THEORETICAL_7CARD[name]*100).toFixed(3)}%</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="muted small">Based on any 7-card deal (independent of your hand).</p>
+            </div>
+          )}
 
           <div className="actions">
             <button onClick={clearAll}>Clear board</button>
