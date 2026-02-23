@@ -258,7 +258,7 @@ export default function App(){
           </div>
 
           <div className="hand-prob">
-            <h3>Hand odds {calc.source==='preflop' ? '(lookup)' : '(exact)'}</h3>
+            <h3>Hand Odds (Theoretical)</h3>
             {calc.loading ? (
               <p className="muted">Calculating...</p>
             ) : !odds ? (
@@ -280,20 +280,6 @@ export default function App(){
             )}
           </div>
 
-          {isPreflop && (
-            <div className="theory-prob">
-              <h3>All-hand theoretical odds (7 cards)</h3>
-              <ul>
-                {HAND_ORDER.map(name => (
-                  <li key={name}>
-                    <span>{name}</span>
-                    <span className="pct">{(THEORETICAL_7CARD[name]*100).toFixed(3)}%</span>
-                  </li>
-                ))}
-              </ul>
-              <p className="muted small">Based on any 7-card deal (independent of your hand).</p>
-            </div>
-          )}
 
           <div className="actions">
             <button onClick={clearAll}>Clear board</button>
