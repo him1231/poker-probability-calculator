@@ -112,7 +112,7 @@ export default function App(){
   }
 
   useEffect(() => {
-    fetch(`/preflop.json?v=${Date.now()}`)
+    fetch(`${import.meta.env.BASE_URL}preflop.json?v=${Date.now()}`)
       .then(r => r.json())
       .then(setPreflopTable)
       .catch(() => {})
