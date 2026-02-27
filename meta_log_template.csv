@@ -1,0 +1,2 @@
+log_id,timestamp,actor,action,target_id,field_changed,old_value,new_value,raw_payload
+log-0001,2026-02-24T11:00:00+09:00,system,create,item-20260314-0001,ALL,,,"{\"id\":\"item-20260314-0001\",\"title\":\"Arrive & transfer\"}"

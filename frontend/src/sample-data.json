@@ -1,0 +1,25 @@
+{
+  "trips": {
+    "trip-demo-1": {
+      "days": [
+        {
+          "id": "1",
+          "date": "2026-03-01",
+          "items": [
+            { "id": "i1", "title": "Arrive at airport", "startTime": "09:00", "status": "confirmed" },
+            { "id": "i2", "title": "Check in hotel", "startTime": "11:00", "status": "suggested", "placeId": "place_123" },
+            { "id": "i3", "title": "Evening walk", "startTime": "18:30", "status": "suggested", "photos": ["https://via.placeholder.com/150", "https://via.placeholder.com/151"] }
+          ]
+        },
+        {
+          "id": "2",
+          "date": "2026-03-02",
+          "items": [
+            { "id": "i4", "title": "Museum visit", "startTime": "10:00", "status": "confirmed", "placeId": "place_456", "photos": ["https://via.placeholder.com/152"] },
+            { "id": "i5", "title": "Lunch at local cafe", "startTime": "13:00", "status": "suggested" }
+          ]
+        }
+      ]
+    }
+  }
+}

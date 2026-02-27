@@ -1,0 +1,9 @@
+Date,Time,Title,Where,Notes,Transport,Cost est,Reservation,Status
+2026-03-14,07:30-09:00,Arrive & transfer,Hotel The Botanik Sewoon,Arrive ICN 05:30; transfer to hotel; check-in after 14:00,AREX ~90min,0,No,Planned
+2026-03-14,11:00-14:00,Brunch & Olive Young,明洞 / 仁寺洞,First Olive Young stop; light brunch,Subway,200,No,Planned
+2026-03-15,09:30-12:30,Gyeongbokgung & Bukchon,Gyeongbokgung Palace,Morning palace & Bukchon,Subway,0,No,Planned
+2026-03-16,10:30-18:00,Shopping day,Hongdae / Myeongdong,Olive Young & clothes shopping,Subway,300,No,Planned
+2026-03-17,10:30-14:00,Namsan / Han River,N Seoul Tower / Han River,Relaxing day,Subway,0,No,Planned
+2026-03-18,09:30-17:00,Optional trip or city deep-dive,City or nearby,Choose Suwon or city deep dive,Subway,0,No,Planned
+2026-03-19,09:00-12:00,Last minute shopping / cafe,Near hotel,Prepare to leave for ICN at ~12:00,Walk,100,No,Planned
+2026-03-19,12:00-15:00,Transfer to ICN,Incheon Intl Airport,Leave hotel ~12:00 to allow 3+ hours before flight,AREX ~90min,0,Yes,Planned
