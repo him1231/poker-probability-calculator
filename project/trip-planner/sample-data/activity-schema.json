@@ -1,0 +1,13 @@
+{
+  "id": "string",
+  "startTime": "HH:MM",
+  "endTime": "HH:MM",
+  "title": "string",
+  "location": { "name": "string", "lat": 0.0, "lng": 0.0, "address": "string", "placeId": "optional" },
+  "notes": "string",
+  "travelMode": "walk|drive|transit",
+  "estimatedTravelMinutes": 30,
+  "status": "confirmed|suggested|skipped",
+  "source": "ai|user",
+  "metadata": {}
+}

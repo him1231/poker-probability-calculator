@@ -1,0 +1,123 @@
+--- RUN AT:  2026-02-26T11:03:01+00:00
+initial_fetch:
+{"year":2026,"month":2,"day":26,"hour":11,"minute":3,"seconds":39,"milliSeconds":191,"dateTime":"2026-02-26T11:03:39.1919268","date":"02/26/2026","time":"11:03","timeZone":"UTC","dayOfWeek":"Thursday","dstActive":false}\nsystem_time_epoch:
+1772103819
+\nservice_timedatectl_output:
+\nopenclaw_doctor_output:
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+██░▄▄▄░██░▄▄░██░▄▄▄██░▀██░██░▄▄▀██░████░▄▄▀██░███░██
+██░███░██░▀▀░██░▄▄▄██░█░█░██░█████░████░▀▀░██░█░█░██
+██░▀▀▀░██░█████░▀▀▀██░██▄░██░▀▀▄██░▀▀░█░██░██▄▀▄▀▄██
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+                  🦞 OPENCLAW 🦞                    
+ 
+┌  OpenClaw doctor
+│
+◇  State integrity ────────────────────────────────────────────────╮
+│                                                                  │
+│  - Found 2 orphan transcript file(s) in                          │
+│    ~/.openclaw/agents/main/sessions. They are not referenced by  │
+│    sessions.json and can consume disk over time.                 │
+│                                                                  │
+├──────────────────────────────────────────────────────────────────╯
+│
+◇  Session locks ──────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  - Found 1 session lock file.                                                │
+│  - ~/.openclaw/agents/main/sessions/bd2e6fb9-8455-4f7c-b962-e844b13a67ab.js  │
+│  onl.lock                                                                    │
+│    pid=128915 (alive) age=1m10s stale=no                                     │
+│                                                                              │
+├──────────────────────────────────────────────────────────────────────────────╯
+│
+◇  Gateway service config ─────────────────────────────────────────────────────╮
+│                                                                              │
+│  - Gateway service uses Node from a version manager; it can break after      │
+│    upgrades. (/home/ubuntu/.nvm/versions/node/v24.13.0/bin/node)             │
+│  - Gateway service entrypoint does not match the current install.            │
+│    (/home/ubuntu/.nvm/versions/node/v24.13.0/lib/node_modules/openclaw/dist  │
+│  /entry.js                                                                   │
+│    ->                                                                        │
+│    /home/ubuntu/.nvm/versions/node/v24.13.0/lib/node_modules/openclaw/dist/  │
+│  index.js)                                                                   │
+│                                                                              │
+├──────────────────────────────────────────────────────────────────────────────╯
+│
+◇  Security ─────────────────────────────────╮
+│                                            │
+│  - No channel security warnings detected.  │
+│  - Run: openclaw security audit --deep     │
+│                                            │
+├────────────────────────────────────────────╯
+│
+◇  Skills status ────────────╮
+│                            │
+│  Eligible: 7               │
+│  Missing requirements: 44  │
+│  Blocked by allowlist: 0   │
+│                            │
+├────────────────────────────╯
+│
+◇  Plugins ──────╮
+│                │
+│  Loaded: 6     │
+│  Disabled: 30  │
+│  Errors: 0     │
+│                │
+├────────────────╯
+Telegram: failed (unknown) - fetch failed
+WhatsApp: linked (auth age 1m)
+Web Channel: +85297308643 (jid 85297308643:12@s.whatsapp.net)
+Agents: main (default)
+Heartbeat interval: 30m (main)
+Session store (main): /home/ubuntu/.openclaw/agents/main/sessions/sessions.json (354 entries)
+- agent:main:cron:7bc10734-367d-468f-b843-fc6c54cf7364 (1m ago)
+- agent:main:cron:7bc10734-367d-468f-b843-fc6c54cf7364:run:bd2e6fb9-8455-4f7c-b962-e844b13a67ab (1m ago)
+- agent:main:cron:7bc10734-367d-468f-b843-fc6c54cf7364:run:4e9946c7-1c6c-41f9-b545-3dfb3866cb6a (6m ago)
+- agent:main:cron:d696f1ac-5cb7-493d-82ad-bae77f943bcd (10m ago)
+- agent:main:cron:d696f1ac-5cb7-493d-82ad-bae77f943bcd:run:36346ed4-d867-415b-b5f7-b88101b27aaf (10m ago)
+│
+◇  Memory search ──────────────────────────────────────────────────────────╮
+│                                                                          │
+│  Memory search is enabled but no embedding provider is configured.       │
+│  Semantic recall will not work without an embedding provider.            │
+│  Gateway memory probe for default agent is not ready: No API key found   │
+│  for provider "openai". Auth store:                                      │
+│  /home/ubuntu/.openclaw/agents/main/agent/auth-profiles.json (agentDir:  │
+│  /home/ubuntu/.openclaw/agents/main/agent). Configure auth for this      │
+│  agent (openclaw agents add <id>) or copy auth-profiles.json from the    │
+│  main agentDir.                                                          │
+│                                                                          │
+│  No API key found for provider "google". Auth store:                     │
+│  /home/ubuntu/.openclaw/agents/main/agent/auth-profiles.json (agentDir:  │
+│  /home/ubuntu/.openclaw/agents/main/agent). Configure auth for this      │
+│  agent (openclaw agents add <id>) or copy auth-profiles.json from the    │
+│  main agentDir.                                                          │
+│                                                                          │
+│  No API key found for provider "voyage". Auth store:                     │
+│  /home/ubuntu/.openclaw/agents/main/agent/auth-profiles.json (agentDir:  │
+│  /home/ubuntu/.openclaw/agents/main/agent). Configure auth for this      │
+│  agent (openclaw agents add <id>) or copy auth-profiles.json from the    │
+│  main agentDir.                                                          │
+│                                                                          │
+│  No API key found for provider "mistral". Auth store:                    │
+│  /home/ubuntu/.openclaw/agents/main/agent/auth-profiles.json (agentDir:  │
+│  /home/ubuntu/.openclaw/agents/main/agent). Configure auth for this      │
+│  agent (openclaw agents add <id>) or copy auth-profiles.json from the    │
+│  main agentDir.                                                          │
+│                                                                          │
+│  Fix (pick one):                                                         │
+│  - Set OPENAI_API_KEY, GEMINI_API_KEY, VOYAGE_API_KEY, or                │
+│    MISTRAL_API_KEY in your environment                                   │
+│  - Configure credentials: openclaw configure --section model             │
+│  - For local embeddings: configure                                       │
+│    agents.defaults.memorySearch.provider and local model path            │
+│  - To disable: openclaw config set agents.defaults.memorySearch.enabled  │
+│    false                                                                 │
+│                                                                          │
+│  Verify: openclaw memory status --deep                                   │
+│                                                                          │
+├──────────────────────────────────────────────────────────────────────────╯
+│
+└  Doctor complete.
+

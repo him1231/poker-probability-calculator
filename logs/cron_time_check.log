@@ -1,0 +1,405 @@
+2026-02-26T23:55:01Z START run. Current failcount=0
+2026-02-26T23:55:02Z Network time (UTC) from https://timeapi.io/api/Time/current/zone?timeZone=UTC: 2026-02-26T23:55:02.5120282Z
+2026-02-26T23:55:02Z System epoch: 1772150102, Network epoch: 1772150102, diff: 0 (abs: 0)
+2026-02-26T23:55:02Z Within threshold (60 s). If failcount>0, reset to 0.
+[2026-02-26T23:57:15Z] Starting cron_time_check run
+[2026-02-26T23:57:16Z] Fetched raw response from https://timeapi.io/api/Time/current/zone?timeZone=UTC: {"year":2026,"month":2,"day":26,"hour":23,"minute":57,"seconds":15,"milliSeconds":858,"dateTime":"2026-02-26T23:57:15.8587233","date":"02/26/2026","time":"23:57","timeZone":"UTC","dayOfWeek":"Thursday","dstActive":false}
+[2026-02-26T23:57:16Z] Network UTC datetime string: 2026-02-26T23:57:15.8587233
+[2026-02-26T23:57:16Z] Network epoch (UTC): 1772150235
+[2026-02-26T23:57:16Z] System epoch (UTC): 1772150236
+[2026-02-26T23:57:16Z] Absolute difference (seconds): 1
+[2026-02-26T23:57:16Z] Difference within threshold (60 s). No action needed.
+[2026-02-26T23:57:16Z] Failcount reset to 0
+[2026-02-27T00:00:01Z] Starting cron_time_check run
+[2026-02-27T00:00:02Z] Fetched raw response from https://timeapi.io/api/Time/current/zone?timeZone=UTC: {"year":2026,"month":2,"day":27,"hour":0,"minute":0,"seconds":2,"milliSeconds":239,"dateTime":"2026-02-27T00:00:02.2397634","date":"02/27/2026","time":"00:00","timeZone":"UTC","dayOfWeek":"Friday","dstActive":false}
+[2026-02-27T00:00:02Z] Network UTC datetime string: 2026-02-27T00:00:02.2397634
+[2026-02-27T00:00:02Z] Network epoch (UTC): 1772150402
+[2026-02-27T00:00:02Z] System epoch (UTC): 1772150402
+[2026-02-27T00:00:02Z] Absolute difference (seconds): 0
+[2026-02-27T00:00:02Z] Difference within threshold (60 s). No action needed.
+[2026-02-27T00:00:02Z] Failcount reset to 0
+[2026-02-27T00:05:01Z] Starting cron_time_check run
+[2026-02-27T00:05:02Z] Fetched raw response from https://timeapi.io/api/Time/current/zone?timeZone=UTC: {"year":2026,"month":2,"day":27,"hour":0,"minute":5,"seconds":2,"milliSeconds":376,"dateTime":"2026-02-27T00:05:02.3767441","date":"02/27/2026","time":"00:05","timeZone":"UTC","dayOfWeek":"Friday","dstActive":false}
+[2026-02-27T00:05:02Z] Network UTC datetime string: 2026-02-27T00:05:02.3767441
+[2026-02-27T00:05:02Z] Network epoch (UTC): 1772150702
+[2026-02-27T00:05:02Z] System epoch (UTC): 1772150702
+[2026-02-27T00:05:02Z] Absolute difference (seconds): 0
+[2026-02-27T00:05:02Z] Difference within threshold (60 s). No action needed.
+[2026-02-27T00:05:02Z] Failcount reset to 0
+2026-02-27T00:07:18.348128+00:00 - RUN START
+NETWORK_UTC=2026-02-27T00:07:19.455512+00:00
+SYSTEM_UTC=2026-02-27T00:07:19+00:00
+DIFFERENCE_SECONDS=0
+RUN END
+
+[2026-02-27T00:10:02Z] Starting cron_time_check run
+[2026-02-27T00:10:02Z] Fetched raw response from https://timeapi.io/api/Time/current/zone?timeZone=UTC: {"year":2026,"month":2,"day":27,"hour":0,"minute":10,"seconds":2,"milliSeconds":718,"dateTime":"2026-02-27T00:10:02.7181668","date":"02/27/2026","time":"00:10","timeZone":"UTC","dayOfWeek":"Friday","dstActive":false}
+[2026-02-27T00:10:02Z] Network UTC datetime string: 2026-02-27T00:10:02.7181668
+[2026-02-27T00:10:02Z] Network epoch (UTC): 1772151002
+[2026-02-27T00:10:02Z] System epoch (UTC): 1772151002
+[2026-02-27T00:10:02Z] Absolute difference (seconds): 0
+[2026-02-27T00:10:02Z] Difference within threshold (60 s). No action needed.
+[2026-02-27T00:10:02Z] Failcount reset to 0
+[2026-02-27T00:15:01Z] Starting cron_time_check run
+[2026-02-27T00:15:02Z] Fetched raw response from https://timeapi.io/api/Time/current/zone?timeZone=UTC: {"year":2026,"month":2,"day":27,"hour":0,"minute":15,"seconds":1,"milliSeconds":848,"dateTime":"2026-02-27T00:15:01.8484276","date":"02/27/2026","time":"00:15","timeZone":"UTC","dayOfWeek":"Friday","dstActive":false}
+[2026-02-27T00:15:02Z] Network UTC datetime string: 2026-02-27T00:15:01.8484276
+[2026-02-27T00:15:02Z] Network epoch (UTC): 1772151301
+[2026-02-27T00:15:02Z] System epoch (UTC): 1772151302
+[2026-02-27T00:15:02Z] Absolute difference (seconds): 1
+[2026-02-27T00:15:02Z] Difference within threshold (60 s). No action needed.
+[2026-02-27T00:15:02Z] Failcount reset to 0
+[2026-02-27T00:20:01Z] Starting cron_time_check run
+[2026-02-27T00:20:02Z] Fetched raw response from https://timeapi.io/api/Time/current/zone?timeZone=UTC: {"year":2026,"month":2,"day":27,"hour":0,"minute":20,"seconds":2,"milliSeconds":625,"dateTime":"2026-02-27T00:20:02.6253169","date":"02/27/2026","time":"00:20","timeZone":"UTC","dayOfWeek":"Friday","dstActive":false}
+[2026-02-27T00:20:02Z] Network UTC datetime string: 2026-02-27T00:20:02.6253169
+[2026-02-27T00:20:02Z] Network epoch (UTC): 1772151602
+[2026-02-27T00:20:02Z] System epoch (UTC): 1772151602
+[2026-02-27T00:20:02Z] Absolute difference (seconds): 0
+[2026-02-27T00:20:02Z] Difference within threshold (60 s). No action needed.
+[2026-02-27T00:20:02Z] Failcount reset to 0
+[2026-02-27T00:25:01Z] Starting cron_time_check run
+[2026-02-27T00:25:02Z] Fetched raw response from https://timeapi.io/api/Time/current/zone?timeZone=UTC: {"year":2026,"month":2,"day":27,"hour":0,"minute":25,"seconds":1,"milliSeconds":901,"dateTime":"2026-02-27T00:25:01.9017508","date":"02/27/2026","time":"00:25","timeZone":"UTC","dayOfWeek":"Friday","dstActive":false}
+[2026-02-27T00:25:02Z] Network UTC datetime string: 2026-02-27T00:25:01.9017508
+[2026-02-27T00:25:02Z] Network epoch (UTC): 1772151901
+[2026-02-27T00:25:02Z] System epoch (UTC): 1772151902
+[2026-02-27T00:25:02Z] Absolute difference (seconds): 1
+[2026-02-27T00:25:02Z] Difference within threshold (60 s). No action needed.
+[2026-02-27T00:25:02Z] Failcount reset to 0
+[2026-02-27T00:30:01Z] Starting cron_time_check run
+[2026-02-27T00:30:02Z] Fetched raw response from https://timeapi.io/api/Time/current/zone?timeZone=UTC: {"year":2026,"month":2,"day":27,"hour":0,"minute":30,"seconds":2,"milliSeconds":138,"dateTime":"2026-02-27T00:30:02.1383825","date":"02/27/2026","time":"00:30","timeZone":"UTC","dayOfWeek":"Friday","dstActive":false}
+[2026-02-27T00:30:02Z] Network UTC datetime string: 2026-02-27T00:30:02.1383825
+[2026-02-27T00:30:02Z] Network epoch (UTC): 1772152202
+[2026-02-27T00:30:02Z] System epoch (UTC): 1772152202
+[2026-02-27T00:30:02Z] Absolute difference (seconds): 0
+[2026-02-27T00:30:02Z] Difference within threshold (60 s). No action needed.
+[2026-02-27T00:30:02Z] Failcount reset to 0
+[2026-02-27T00:32:17Z] Starting cron_time_check run
+[2026-02-27T00:32:18Z] Network epoch: 1772152338, System epoch: 1772152338, abs diff: 0 seconds
+[2026-02-27T00:32:18Z] Within threshold (60 s). All good. Resetting failcount to 0.
+[2026-02-27T00:35:01Z] Starting cron_time_check run
+[2026-02-27T00:35:03Z] Network epoch: 1772152503, System epoch: 1772152503, abs diff: 0 seconds
+[2026-02-27T00:35:03Z] Within threshold (60 s). All good. Resetting failcount to 0.
+[2026-02-27T00:37:11Z] INFO: network_time=2026-02-27T00:37:11.3196871 (epoch=1772152631), system_utc_epoch=1772152631, abs_diff_seconds=0
+[2026-02-27T00:37:11Z] OK: difference (0 s) <= threshold (60). Failcount reset to 0.
+[2026-02-27T00:40:03Z] INFO: network_time=2026-02-27T00:40:02.9296346 (epoch=1772152802), system_utc_epoch=1772152803, abs_diff_seconds=1
+[2026-02-27T00:40:03Z] OK: difference (1 s) <= threshold (60). Failcount reset to 0.
+2026-02-27T00:42:15Z Starting cron_time_check run. current failcount=0
+2026-02-27T00:42:17Z Network UTC: 2026-02-27T00:42:16.9706169 (epoch=1772152936). System UTC epoch=1772152937. diff_seconds=1 abs=1
+2026-02-27T00:42:17Z Within threshold (60 s). No action needed. Resetting failcount to 0.
+2026-02-27T00:45:01Z Starting cron_time_check run. current failcount=0
+2026-02-27T00:45:02Z Network UTC: 2026-02-27T00:45:02.4132053 (epoch=1772153102). System UTC epoch=1772153102. diff_seconds=0 abs=0
+2026-02-27T00:45:02Z Within threshold (60 s). No action needed. Resetting failcount to 0.
+2026-02-27T00:50:02Z Starting cron_time_check run. current failcount=0
+2026-02-27T00:50:03Z Network UTC: 2026-02-27T00:50:02.8518226 (epoch=1772153402). System UTC epoch=1772153403. diff_seconds=1 abs=1
+2026-02-27T00:50:03Z Within threshold (60 s). No action needed. Resetting failcount to 0.
+[2026-02-27T00:52:16Z] Starting cron_time_check run
+[2026-02-27T00:52:17Z] Network epoch: 1772153537; System epoch: 1772153537; abs diff: 0 seconds
+[2026-02-27T00:52:17Z] OK: time difference (0 s) within threshold (60 s).
+[2026-02-27T00:52:17Z] Reset failcount to 0
+[2026-02-27T00:55:01Z] Starting cron_time_check run
+[2026-02-27T00:55:03Z] Network epoch: 1772153702; System epoch: 1772153703; abs diff: 1 seconds
+[2026-02-27T00:55:03Z] OK: time difference (1 s) within threshold (60 s).
+[2026-02-27T00:55:03Z] Reset failcount to 0
+[2026-02-27T01:00:01Z] Starting cron_time_check run
+[2026-02-27T01:00:02Z] Network epoch: 1772154002; System epoch: 1772154002; abs diff: 0 seconds
+[2026-02-27T01:00:02Z] OK: time difference (0 s) within threshold (60 s).
+[2026-02-27T01:00:02Z] Reset failcount to 0
+[2026-02-27T01:05:01Z] Starting cron_time_check run
+[2026-02-27T01:05:02Z] Network epoch: 1772154302; System epoch: 1772154302; abs diff: 0 seconds
+[2026-02-27T01:05:02Z] OK: time difference (0 s) within threshold (60 s).
+[2026-02-27T01:05:02Z] Reset failcount to 0
+[2026-02-27T01:10:02Z] Starting cron_time_check run
+[2026-02-27T01:10:03Z] Network epoch: 1772154603; System epoch: 1772154603; abs diff: 0 seconds
+[2026-02-27T01:10:03Z] OK: time difference (0 s) within threshold (60 s).
+[2026-02-27T01:10:03Z] Reset failcount to 0
+2026-02-27T01:15:01Z === cron_time_check run start ===
+2026-02-27T01:18:01Z UTC - Run start. System UTC epoch=1772155080. Network epoch=1772155081. Initial diff_seconds=1
+2026-02-27T01:18:01Z UTC - Initial difference within threshold; no action needed
+2026-02-27T01:18:01Z UTC - Failcount reset to 0
+2026-02-27T01:18:01Z UTC - Run end. Resolved=1
+2026-02-27T01:20:02Z UTC - Run start. System UTC epoch=1772155201. Network epoch=1772155201. Initial diff_seconds=0
+2026-02-27T01:20:02Z UTC - Initial difference within threshold; no action needed
+2026-02-27T01:20:02Z UTC - Failcount reset to 0
+2026-02-27T01:20:02Z UTC - Run end. Resolved=1
+[2026-02-27T01:25:01Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T01:25:02Z] Network UTC (timeapi.io): 2026-02-27T01:25:02.4135302 (epoch=1772155502); System UTC: 2026-02-27T01:25:02Z (epoch=1772155502); abs_diff=0s
+[2026-02-27T01:25:02Z] OK: time difference within threshold (60s). No action needed.
+[2026-02-27T01:30:01Z] Starting cron_time_check run
+[2026-02-27T01:30:03Z] Network UTC: month (epoch=1774575003); System UTC epoch=1772155803; diff_seconds=2419200; absdiff=2419200
+[2026-02-27T01:30:03Z] ALERT: time difference (2419200 s) exceeds threshold (60 s). Attempting corrective steps.
+[2026-02-27T01:30:03Z] Ran: timedatectl set-ntp off
+[2026-02-27T01:30:05Z] Ran: timedatectl set-ntp on
+[2026-02-27T01:30:08Z] Post-fix: Network UTC: month (epoch=1774575008); System UTC epoch=1772155808; absdiff2=2419200
+[2026-02-27T01:30:08Z] WARNING: openclaw CLI not found; cannot run doctor
+[2026-02-27T01:30:09Z] Post-doctor: Network UTC: month (epoch=1774575009); System UTC epoch=1772155809; absdiff3=2419200
+[2026-02-27T01:30:09Z] PERSISTENT: time difference still > threshold (absdiff3=2419200). failcount=1
+[2026-02-27T01:30:09Z] Not sending notification yet; failcount (1) < 12
+[2026-02-27T01:35:01Z] Starting cron_time_check (threshold=60s, source=timeapi.io)
+[2026-02-27T01:35:02Z] Network epoch: 1772156101; System epoch: 1772156102; abs diff: 1s
+[2026-02-27T01:35:02Z] Times within threshold. System clock OK. Resetting failcount to 0 if needed.
+[2026-02-27T01:40:02Z] Fetched network UTC (timeapi.io): 2026-02-27T01:40:01.7490278 (epoch 1772156401). System UTC: 2026-02-27T01:40:02Z (epoch 1772156402). Raw diff: -1 s. Abs diff: 1 s. Threshold: 60 s.
+[2026-02-27T01:40:02Z] OK: difference 1 <= threshold 60. Resetting failcount if non-zero.
+[2026-02-27T01:45:01Z] Starting cron_time_check (threshold=60s). Current failcount=0. Source=https://timeapi.io/api/Time/current/zone?timeZone=UTC
+[2026-02-27T01:45:02Z] Network epoch=1772156702, System epoch=1772156702, abs diff=0s
+[2026-02-27T01:45:02Z] OK: time within threshold (0s <= 60s). Resetting failcount if needed.
+[2026-02-27T01:45:02Z] Resolved this run; no notification sent.
+[2026-02-27T01:45:02Z] cron_time_check run complete.
+[2026-02-27T01:50:02Z] Starting cron_time_check (threshold=60s). Current failcount=0. Source=https://timeapi.io/api/Time/current/zone?timeZone=UTC
+[2026-02-27T01:50:03Z] Network epoch=1772157924, System epoch=1772157003, abs diff=921s
+[2026-02-27T01:50:03Z] Time difference 921s exceeds threshold 60s. Attempting corrective steps.
+[2026-02-27T02:05:30Z] After corrective steps: network_epoch=1772157929, system_epoch=1772157930, abs diff=1s
+[2026-02-27T02:05:30Z] SUCCESS: corrective timedatectl cycle brought system time within threshold
+[2026-02-27T02:05:30Z] Resolved this run; no notification sent.
+[2026-02-27T02:05:30Z] cron_time_check run complete.
+[2026-02-27T02:05:30Z] Starting cron_time_check (threshold=60s). Current failcount=0. Source=https://timeapi.io/api/Time/current/zone?timeZone=UTC
+[2026-02-27T02:05:30Z] Network epoch=1772157930, System epoch=1772157930, abs diff=0s
+[2026-02-27T02:05:30Z] OK: time within threshold (0s <= 60s). Resetting failcount if needed.
+[2026-02-27T02:05:30Z] Resolved this run; no notification sent.
+[2026-02-27T02:05:30Z] cron_time_check run complete.
+2026-02-27T02:06:11Z - ERROR: unexpected JSON from https://timeapi.io/api/Time/current/zone?timeZone=UTC: {"year":2026,"month":2,"day":27,"hour":2,"minute":6,"seconds":11,"milliSeconds":68,"dateTime":"2026-02-27T02:06:11.0689751","date":"02/27/2026","time":"02:06","timeZone":"UTC","dayOfWeek":"Friday","dstActive":false}
+2026-02-27T02:06:54Z - INFO: network=2026-02-27T02:06:53.8369868Z, system=2026-02-27T02:06:54Z, diff_seconds=1
+2026-02-27T02:06:54Z - OK: within threshold (60 s).
+2026-02-27T02:06:54Z - FAILCOUNT reset to 0.
+[2026-02-27T02:10:01Z] Starting cron_time_check (threshold=60s). Current failcount=0. Source=https://timeapi.io/api/Time/current/zone?timeZone=UTC
+[2026-02-27T02:10:03Z] Network epoch=1772158202, System epoch=1772158203, abs diff=1s
+[2026-02-27T02:10:03Z] OK: time within threshold (1s <= 60s). Resetting failcount if needed.
+[2026-02-27T02:10:03Z] Resolved this run; no notification sent.
+[2026-02-27T02:10:03Z] cron_time_check run complete.
+[2026-02-27T02:15:01Z] Starting time check (source=timeapi.io, threshold=60s)
+[2026-02-27T02:15:02Z] Network UTC: 2026-02-27T02:15:01.9223183
+[2026-02-27T02:15:02Z] System  UTC: 2026-02-27T02:15:02Z
+[2026-02-27T02:15:02Z] Initial difference: 1s
+[2026-02-27T02:15:02Z] Within threshold. System time OK. Resetting fail counter if present.
+[2026-02-27T02:20:01Z] Starting time check. Fetching network UTC from https://timeapi.io/api/Time/current/zone?timeZone=Etc/UTC
+[2026-02-27T02:20:02Z] ERROR: failed to parse network time: :"2026-02-27T02:20:02.2039892
+
+===================== 2026-02-27T02:20:48Z UTC Run =====================
+Network dateTime: 2026-02-27T02:20:47.7121849 (epoch 1772158847)
+System UTC: 2026-02-27T02:20:47.225 (epoch 1772158848)
+Absolute difference (s): 1
+[2026-02-27T02:25:01Z] Starting time check. Fetching network UTC from https://timeapi.io/api/Time/current/zone?timeZone=Etc/UTC
+[2026-02-27T02:25:02Z] ERROR: failed to parse network time: :"2026-02-27T02:25:02.3975221
+2026-02-27T02:25:20Z Starting time check run
+2026-02-27T02:25:55Z Starting time check run
+2026-02-27T02:25:57Z ERROR: failed to fetch network time from timeapi.io
+[2026-02-27T02:30:01Z] Starting time check. Fetching network UTC from https://timeapi.io/api/Time/current/zone?timeZone=Etc/UTC
+[2026-02-27T02:30:03Z] ERROR: failed to parse network time: :"2026-02-27T02:30:03.3618206
+[2026-02-27T02:35:01Z] Starting cron_time_check (SOURCE=timeapi.io THRESHOLD_SECONDS=60)
+[2026-02-27T02:35:02Z] Network epoch: , System epoch: 1772159702, abs diff: 1772159702 seconds
+[2026-02-27T02:35:02Z] Difference 1772159702 > threshold 60. Running corrective steps.
+[2026-02-27T02:35:02Z] Attempting corrective steps: timedatectl set-ntp off -> on
+[2026-02-27T02:35:08Z] After corrective steps: Network epoch: , System epoch: 1772159708, abs diff: 1772159708 seconds
+[2026-02-27T02:35:08Z] Running: openclaw doctor --fix
+[2026-02-27T02:35:08Z] openclaw doctor --fix failed or openclaw not found. Output appended to log if any.
+[2026-02-27T02:35:08Z] Running: openclaw doctor --fix
+openclaw_not_found
+[2026-02-27T02:35:08Z] Post-doctor: Network epoch: , System epoch: 1772159708, abs diff: 1772159708 seconds
+[2026-02-27T02:35:08Z] Persistent problem: diff 1772159708 > 60
+[2026-02-27T02:35:08Z] Persistent failure count incremented to 1 (threshold for notify: 12)
+[2026-02-27T02:40:01Z] Starting cron_time_check (SOURCE=timeapi.io THRESHOLD_SECONDS=60)
+[2026-02-27T02:40:06Z] Network epoch: , System epoch: 1772160006, abs diff: 1772160006 seconds
+[2026-02-27T02:40:06Z] Difference 1772160006 > threshold 60. Running corrective steps.
+[2026-02-27T02:40:06Z] Attempting corrective steps: timedatectl set-ntp off -> on
+[2026-02-27T02:40:14Z] After corrective steps: Network epoch: , System epoch: 1772160014, abs diff: 1772160014 seconds
+[2026-02-27T02:40:14Z] Running: openclaw doctor --fix
+[2026-02-27T02:40:14Z] openclaw doctor --fix failed or openclaw not found. Output appended to log if any.
+[2026-02-27T02:40:14Z] Running: openclaw doctor --fix
+openclaw_not_found
+[2026-02-27T02:40:16Z] Post-doctor: Network epoch: , System epoch: 1772160016, abs diff: 1772160016 seconds
+[2026-02-27T02:40:16Z] Persistent problem: diff 1772160016 > 60
+[2026-02-27T02:40:16Z] Persistent failure count incremented to 2 (threshold for notify: 12)
+2026-02-27T02:45:01Z START
+2026-02-27T02:45:02Z NetworkUTC=2026-02-27T02:45:01.9694767 NetworkEpoch=1772160301 SystemEpoch=1772160302 DiffSeconds=-1 AbsDiff=1
+2026-02-27T02:45:02Z OK: time difference 1 <= threshold 60. Resetting failcount if needed.
+2026-02-27T02:45:02Z END RESOLVED
+[2026-02-27T02:45:45Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T02:45:45Z] Fetching network UTC from timeapi.io
+[2026-02-27T02:45:46Z] Network epoch: 1772160345, System epoch: 1772160346, diff=1 (abs=1) seconds
+[2026-02-27T02:45:46Z] OK: system time within threshold (60 s). Resetting failcount to 0.
+[2026-02-27T02:50:01Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T02:50:01Z] Fetching network UTC from timeapi.io
+[2026-02-27T02:50:02Z] Network epoch: 1772160602, System epoch: 1772160602, diff=0 (abs=0) seconds
+[2026-02-27T02:50:02Z] OK: system time within threshold (60 s). Resetting failcount to 0.
+[2026-02-27T02:55:01Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T02:55:01Z] Fetching network UTC from timeapi.io
+[2026-02-27T02:55:02Z] Network epoch: 1772160902, System epoch: 1772160902, diff=0 (abs=0) seconds
+[2026-02-27T02:55:02Z] OK: system time within threshold (60 s). Resetting failcount to 0.
+[2026-02-27T02:55:57Z] Starting cron_time_check
+[2026-02-27T02:56:00Z] ERROR: couldn't parse network datetime from response: {"year":2026,"month":2,"day":27,"hour":2,"minute":55,"seconds":59,"milliSeconds":988,"dateTime":"2026-02-27T02:55:59.9889192","date":"02/27/2026","time":"02:55","timeZone":"UTC","dayOfWeek":"Friday","dstActive":false}
+[2026-02-27T02:56:13Z] Starting cron_time_check
+[2026-02-27T02:56:14Z] ERROR: couldn't parse network datetime from response: {"year":2026,"month":2,"day":27,"hour":2,"minute":56,"seconds":14,"milliSeconds":577,"dateTime":"2026-02-27T02:56:14.5776848","date":"02/27/2026","time":"02:56","timeZone":"UTC","dayOfWeek":"Friday","dstActive":false}
+[2026-02-27T03:00:01Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T03:00:01Z] Fetching network UTC from timeapi.io
+[2026-02-27T03:00:02Z] Network epoch: 1772161202, System epoch: 1772161202, diff=0 (abs=0) seconds
+[2026-02-27T03:00:02Z] OK: system time within threshold (60 s). Resetting failcount to 0.
+[2026-02-27T03:05:02Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T03:05:02Z] Fetching network UTC from timeapi.io
+[2026-02-27T03:05:03Z] Network epoch: 1772161502, System epoch: 1772161503, diff=1 (abs=1) seconds
+[2026-02-27T03:05:03Z] OK: system time within threshold (60 s). Resetting failcount to 0.
+2026-02-27T03:06:30Z - Initial check: network_epoch=1772161590 system_epoch=1772161590 diff_seconds=0
+[2026-02-27T03:10:01Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T03:10:01Z] Fetching network UTC from timeapi.io
+[2026-02-27T03:10:02Z] Network epoch: 1772161801, System epoch: 1772161802, diff=1 (abs=1) seconds
+[2026-02-27T03:10:02Z] OK: system time within threshold (60 s). Resetting failcount to 0.
+[2026-02-27T03:15:01Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T03:15:01Z] Fetching network UTC from timeapi.io
+[2026-02-27T03:15:02Z] Network epoch: 1772162101, System epoch: 1772162102, diff=1 (abs=1) seconds
+[2026-02-27T03:15:02Z] OK: system time within threshold (60 s). Resetting failcount to 0.
+[2026-02-27T03:20:01Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T03:20:01Z] Fetching network UTC from timeapi.io
+[2026-02-27T03:20:02Z] Network epoch: 1772162401, System epoch: 1772162402, diff=1 (abs=1) seconds
+[2026-02-27T03:20:02Z] OK: system time within threshold (60 s). Resetting failcount to 0.
+[2026-02-27T03:25:01Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T03:25:01Z] Fetching network UTC from timeapi.io
+[2026-02-27T03:25:02Z] Network epoch: 1772162702, System epoch: 1772162702, diff=0 (abs=0) seconds
+[2026-02-27T03:25:02Z] OK: system time within threshold (60 s). Resetting failcount to 0.
+[2026-02-27T03:26:17Z] Starting cron_time_check: current failcount=0
+[2026-02-27T03:26:17Z] Fetching network time from https://timeapi.io/api/Time/current/zone?timeZone=UTC
+[2026-02-27T03:30:02Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T03:30:02Z] Fetching network UTC from timeapi.io
+[2026-02-27T03:30:03Z] Network epoch: 1772163003, System epoch: 1772163003, diff=0 (abs=0) seconds
+[2026-02-27T03:30:03Z] OK: system time within threshold (60 s). Resetting failcount to 0.
+[2026-02-27T03:35:01Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T03:35:01Z] Fetching network UTC from timeapi.io
+[2026-02-27T03:35:01Z] ERROR: Failed to fetch time from timeapi.io
+[2026-02-27T03:40:01Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T03:40:01Z] Fetching network UTC from timeapi.io
+[2026-02-27T03:40:02Z] Network epoch: 1772165573, System epoch: 1772163602, diff=-1971 (abs=1971) seconds
+[2026-02-27T03:40:02Z] ALERT: time difference 1971 seconds > threshold 60. Attempting corrective steps.
+[2026-02-27T03:40:02Z] + sudo timedatectl set-ntp off; sleep 2
+[2026-02-27T03:40:04Z] CMD OK: 
+[2026-02-27T03:40:04Z] + sudo timedatectl set-ntp on; sleep 2
+[2026-02-27T04:12:58Z] CMD OK: 
+[2026-02-27T04:12:59Z] After corrective steps: Network epoch: 1772165579, System epoch: 1772165578, diff=-1 (abs=1)
+[2026-02-27T04:12:59Z] SUCCESS: Issue resolved by corrective actions. Resetting failcount to 0.
+[2026-02-27T04:15:01Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T04:15:01Z] Fetching network UTC from timeapi.io
+[2026-02-27T04:15:03Z] Network epoch: 1772165702, System epoch: 1772165703, diff=1 (abs=1) seconds
+[2026-02-27T04:15:03Z] OK: system time within threshold (60 s). Resetting failcount to 0.
+[2026-02-27T04:20:01Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T04:20:01Z] Fetching network UTC from timeapi.io
+[2026-02-27T04:20:02Z] Network epoch: 1772166002, System epoch: 1772166002, diff=0 (abs=0) seconds
+[2026-02-27T04:20:02Z] OK: system time within threshold (60 s). Resetting failcount to 0.
+[2026-02-27T04:25:01Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T04:25:01Z] Fetching network UTC from timeapi.io
+[2026-02-27T04:25:02Z] Network epoch: 1772166302, System epoch: 1772166302, diff=0 (abs=0) seconds
+[2026-02-27T04:25:02Z] OK: system time within threshold (60 s). Resetting failcount to 0.
+[2026-02-27T04:30:01Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T04:30:01Z] Fetching network UTC from timeapi.io
+[2026-02-27T04:30:03Z] Network epoch: 1772166603, System epoch: 1772166603, diff=0 (abs=0) seconds
+[2026-02-27T04:30:03Z] OK: system time within threshold (60 s). Resetting failcount to 0.
+[2026-02-27T04:35:01Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T04:35:01Z] Fetching network UTC from timeapi.io
+[2026-02-27T04:35:02Z] Network epoch: 1772166902, System epoch: 1772166902, diff=0 (abs=0) seconds
+[2026-02-27T04:35:02Z] OK: system time within threshold (60 s). Resetting failcount to 0.
+[2026-02-27T04:40:02Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T04:40:02Z] Fetching network UTC from timeapi.io
+[2026-02-27T04:40:03Z] Network epoch: 1772167202, System epoch: 1772167203, diff=1 (abs=1) seconds
+[2026-02-27T04:40:03Z] OK: system time within threshold (60 s). Resetting failcount to 0.
+[2026-02-27T04:45:01Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T04:45:01Z] Fetching network UTC from timeapi.io
+[2026-02-27T04:45:03Z] Network epoch: 1772167503, System epoch: 1772167503, diff=0 (abs=0) seconds
+[2026-02-27T04:45:03Z] OK: system time within threshold (60 s). Resetting failcount to 0.
+[2026-02-27T04:50:01Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T04:50:01Z] Fetching network UTC from timeapi.io
+[2026-02-27T04:50:03Z] Network epoch: 1772167802, System epoch: 1772167803, diff=1 (abs=1) seconds
+[2026-02-27T04:50:03Z] OK: system time within threshold (60 s). Resetting failcount to 0.
+[2026-02-27T04:55:01Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T04:55:01Z] Fetching network UTC from timeapi.io
+[2026-02-27T04:55:03Z] Network epoch: 1772168102, System epoch: 1772168103, diff=1 (abs=1) seconds
+[2026-02-27T04:55:03Z] OK: system time within threshold (60 s). Resetting failcount to 0.
+[2026-02-27T05:00:01Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T05:00:01Z] Fetching network UTC from timeapi.io
+[2026-02-27T05:00:02Z] Network epoch: 1772168402, System epoch: 1772168402, diff=0 (abs=0) seconds
+[2026-02-27T05:00:02Z] OK: system time within threshold (60 s). Resetting failcount to 0.
+[2026-02-27T05:05:01Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T05:05:01Z] Fetching network UTC from timeapi.io
+[2026-02-27T05:05:03Z] Network epoch: 1772168702, System epoch: 1772168703, diff=1 (abs=1) seconds
+[2026-02-27T05:05:03Z] OK: system time within threshold (60 s). Resetting failcount to 0.
+[2026-02-27T05:10:01Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T05:10:01Z] Fetching network UTC from timeapi.io
+[2026-02-27T05:10:02Z] Network epoch: 1772169002, System epoch: 1772169002, diff=0 (abs=0) seconds
+[2026-02-27T05:10:02Z] OK: system time within threshold (60 s). Resetting failcount to 0.
+[2026-02-27T05:15:01Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T05:15:01Z] Fetching network UTC from timeapi.io
+[2026-02-27T05:15:03Z] Network epoch: 1772169302, System epoch: 1772169303, diff=1 (abs=1) seconds
+[2026-02-27T05:15:03Z] OK: system time within threshold (60 s). Resetting failcount to 0.
+[2026-02-27T05:20:01Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T05:20:01Z] Fetching network UTC from timeapi.io
+[2026-02-27T05:20:02Z] Network epoch: 1772169602, System epoch: 1772169602, diff=0 (abs=0) seconds
+[2026-02-27T05:20:02Z] OK: system time within threshold (60 s). Resetting failcount to 0.
+[2026-02-27T05:25:01Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T05:25:01Z] Fetching network UTC from timeapi.io
+[2026-02-27T05:25:02Z] Network epoch: 1772169902, System epoch: 1772169902, diff=0 (abs=0) seconds
+[2026-02-27T05:25:02Z] OK: system time within threshold (60 s). Resetting failcount to 0.
+[2026-02-27T05:30:02Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T05:30:02Z] Fetching network UTC from timeapi.io
+[2026-02-27T05:30:02Z] Network epoch: 1772170202, System epoch: 1772170202, diff=0 (abs=0) seconds
+[2026-02-27T05:30:02Z] OK: system time within threshold (60 s). Resetting failcount to 0.
+[2026-02-27T05:35:01Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T05:35:01Z] Fetching network UTC from timeapi.io
+[2026-02-27T05:35:02Z] Network epoch: 1772170501, System epoch: 1772170502, diff=1 (abs=1) seconds
+[2026-02-27T05:35:02Z] OK: system time within threshold (60 s). Resetting failcount to 0.
+[2026-02-27T05:40:01Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T05:40:01Z] Fetching network UTC from timeapi.io
+[2026-02-27T05:40:02Z] Network epoch: 1772170802, System epoch: 1772170802, diff=0 (abs=0) seconds
+[2026-02-27T05:40:02Z] OK: system time within threshold (60 s). Resetting failcount to 0.
+[2026-02-27T05:45:01Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T05:45:01Z] Fetching network UTC from timeapi.io
+[2026-02-27T05:45:03Z] Network epoch: 1772171102, System epoch: 1772171103, diff=1 (abs=1) seconds
+[2026-02-27T05:45:03Z] OK: system time within threshold (60 s). Resetting failcount to 0.
+[2026-02-27T05:50:01Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T05:50:01Z] Fetching network UTC from timeapi.io
+[2026-02-27T05:50:02Z] Network epoch: 1772171401, System epoch: 1772171402, diff=1 (abs=1) seconds
+[2026-02-27T05:50:02Z] OK: system time within threshold (60 s). Resetting failcount to 0.
+[2026-02-27T05:55:01Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T05:55:01Z] Fetching network UTC from timeapi.io
+[2026-02-27T05:55:02Z] Network epoch: 1772171702, System epoch: 1772171702, diff=0 (abs=0) seconds
+[2026-02-27T05:55:02Z] OK: system time within threshold (60 s). Resetting failcount to 0.
+[2026-02-27T06:00:01Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T06:00:01Z] Fetching network UTC from timeapi.io
+[2026-02-27T06:00:02Z] Network epoch: 1772172002, System epoch: 1772172002, diff=0 (abs=0) seconds
+[2026-02-27T06:00:02Z] OK: system time within threshold (60 s). Resetting failcount to 0.
+[2026-02-27T06:05:01Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T06:05:01Z] Fetching network UTC from timeapi.io
+[2026-02-27T06:05:03Z] Network epoch: 1772172302, System epoch: 1772172303, diff=1 (abs=1) seconds
+[2026-02-27T06:05:03Z] OK: system time within threshold (60 s). Resetting failcount to 0.
+[2026-02-27T06:10:01Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T06:10:01Z] Fetching network UTC from timeapi.io
+[2026-02-27T06:10:02Z] Network epoch: 1772172601, System epoch: 1772172602, diff=1 (abs=1) seconds
+[2026-02-27T06:10:02Z] OK: system time within threshold (60 s). Resetting failcount to 0.
+[2026-02-27T06:15:01Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T06:15:01Z] Fetching network UTC from timeapi.io
+[2026-02-27T06:15:02Z] Network epoch: 1772172902, System epoch: 1772172902, diff=0 (abs=0) seconds
+[2026-02-27T06:15:02Z] OK: system time within threshold (60 s). Resetting failcount to 0.
+[2026-02-27T06:20:01Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T06:20:01Z] Fetching network UTC from timeapi.io
+[2026-02-27T06:20:03Z] Network epoch: 1772173202, System epoch: 1772173203, diff=1 (abs=1) seconds
+[2026-02-27T06:20:03Z] OK: system time within threshold (60 s). Resetting failcount to 0.
+[2026-02-27T06:25:01Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T06:25:01Z] Fetching network UTC from timeapi.io
+[2026-02-27T06:25:02Z] Network epoch: 1772173501, System epoch: 1772173502, diff=1 (abs=1) seconds
+[2026-02-27T06:25:02Z] OK: system time within threshold (60 s). Resetting failcount to 0.
+[2026-02-27T06:30:01Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T06:30:01Z] Fetching network UTC from timeapi.io
+[2026-02-27T06:30:01Z] Network epoch: 1772173801, System epoch: 1772173801, diff=0 (abs=0) seconds
+[2026-02-27T06:30:01Z] OK: system time within threshold (60 s). Resetting failcount to 0.
+[2026-02-27T06:35:01Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T06:35:01Z] Fetching network UTC from timeapi.io
+[2026-02-27T06:35:03Z] Network epoch: 1772174102, System epoch: 1772174103, diff=1 (abs=1) seconds
+[2026-02-27T06:35:03Z] OK: system time within threshold (60 s). Resetting failcount to 0.
+[2026-02-27T06:40:01Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T06:40:01Z] Fetching network UTC from timeapi.io
+[2026-02-27T06:40:01Z] Network epoch: 1772174401, System epoch: 1772174401, diff=0 (abs=0) seconds
+[2026-02-27T06:40:01Z] OK: system time within threshold (60 s). Resetting failcount to 0.
+[2026-02-27T06:45:01Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T06:45:01Z] Fetching network UTC from timeapi.io
+[2026-02-27T06:45:02Z] Network epoch: 1772174701, System epoch: 1772174702, diff=1 (abs=1) seconds
+[2026-02-27T06:45:02Z] OK: system time within threshold (60 s). Resetting failcount to 0.
+[2026-02-27T06:50:01Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T06:50:01Z] Fetching network UTC from timeapi.io
+[2026-02-27T06:50:02Z] Network epoch: 1772175001, System epoch: 1772175002, diff=1 (abs=1) seconds
+[2026-02-27T06:50:02Z] OK: system time within threshold (60 s). Resetting failcount to 0.
+[2026-02-27T06:55:01Z] Starting cron_time_check run. Current failcount=0
+[2026-02-27T06:55:01Z] Fetching network UTC from timeapi.io
+[2026-02-27T06:55:02Z] Network epoch: 1772175302, System epoch: 1772175302, diff=0 (abs=0) seconds
+[2026-02-27T06:55:02Z] OK: system time within threshold (60 s). Resetting failcount to 0.

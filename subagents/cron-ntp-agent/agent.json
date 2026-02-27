@@ -1,0 +1,6 @@
+{
+  "label": "cron-ntp-agent",
+  "timeout_seconds": 300,
+  "description": "Minimal subagent to run agentTurn payloads for the NTP cron job. Executes the provided message as a shell command and returns stdout/stderr.",
+  "entrypoint": "run.sh"
+}

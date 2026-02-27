@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+set -euo pipefail
+LOGDIR=/home/ubuntu/.openclaw/workspace/logs
+mkdir -p "$LOGDIR"
+LOG=$LOGDIR/cron_time_check.log
+THRESHOLD=60
+SOURCE_URL="https://timeapi.io/api/Time/current/zone?timeZone=UTC"
+now_ts=$(date -u +%s)
+now_iso=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+net_json=$(curl -sS "$SOURCE_URL") || { echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) ERROR: failed to fetch network time" | tee -a "$LOG"; exit 1; }
+net_dt=$(echo "$net_json" | sed -n 's/.*"dateTime": "\([^"]*\)".*/\1/p')
+net_ts=$(date -u -d "$net_dt" +%s 2>/dev/null || true)
+if [ -z "$net_ts" ]; then
+  year=$(echo "$net_json" | sed -n 's/.*"year": \([0-9]*\),.*/\1/p')
+  month=$(echo "$net_json" | sed -n 's/.*"month": \([0-9]*\),.*/\1/p')
+  day=$(echo "$net_json" | sed -n 's/.*"day": \([0-9]*\),.*/\1/p')
+  hour=$(echo "$net_json" | sed -n 's/.*"hour": \([0-9]*\),.*/\1/p')
+  minute=$(echo "$net_json" | sed -n 's/.*"minute": \([0-9]*\),.*/\1/p')
+  seconds=$(echo "$net_json" | sed -n 's/.*"seconds": \([0-9]*\),.*/\1/p')
+  net_ts=$(date -u -d "$year-$month-$day $hour:$minute:$seconds" +%s)
+fi
+absdiff() { a=$1; b=$2; d=$((a-b)); if [ $d -lt 0 ]; then d=$(( -d )); fi; echo $d; }
+initial_diff=$(absdiff $net_ts $now_ts)
+printf "=================================================================\n" | tee -a "$LOG"
+echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) RUN: cron_time_check_ntp_reset" | tee -a "$LOG"
+echo "Source: $SOURCE_URL" | tee -a "$LOG"
+echo "System UTC: $now_iso - $now_ts" | tee -a "$LOG"
+net_iso=$(date -u -d @"$net_ts" +%Y-%m-%dT%H:%M:%SZ)
+echo "Network UTC: $net_iso - $net_ts" | tee -a "$LOG"
+echo "Initial absolute difference secs: $initial_diff" | tee -a "$LOG"
+if [ "$initial_diff" -le $THRESHOLD ]; then
+  echo "STATUS: ok within threshold" | tee -a "$LOG"
+  exit 0
+fi
+
+echo "STATUS: difference greater than threshold, attempting corrective steps" | tee -a "$LOG"
+step_a_out=$(sudo timedatectl set-ntp off 2>&1 || true)
+sleep 2
+step_b_out=$(sudo timedatectl set-ntp on 2>&1 || true)
+sleep 2
+now_ts2=$(date -u +%s)
+now_iso2=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+second_diff=$(absdiff $net_ts $now_ts2)
+echo "Corrective step A output: $step_a_out" | tee -a "$LOG"
+echo "Corrective step B output: $step_b_out" | tee -a "$LOG"
+echo "System UTC after corrective steps: $now_iso2 - $now_ts2" | tee -a "$LOG"
+echo "Absolute difference after corrective steps secs: $second_diff" | tee -a "$LOG"
+if [ "$second_diff" -le $THRESHOLD ]; then
+  echo "STATUS: resolved after corrective steps" | tee -a "$LOG"
+  exit 0
+fi
+
+echo "STATUS: still greater than threshold after corrective steps; running openclaw doctor --fix" | tee -a "$LOG"
+doc_out=$(openclaw doctor --fix 2>&1 || true)
+echo "----- openclaw doctor --fix output start -----" | tee -a "$LOG"
+echo "$doc_out" | tee -a "$LOG"
+echo "----- openclaw doctor --fix output end -----" | tee -a "$LOG"
+now_ts3=$(date -u +%s)
+now_iso3=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+third_diff=$(absdiff $net_ts $now_ts3)
+echo "System UTC after doctor: $now_iso3 - $now_ts3" | tee -a "$LOG"
+echo "Absolute difference after doctor secs: $third_diff" | tee -a "$LOG"
+if [ "$third_diff" -le $THRESHOLD ] && ! echo "$doc_out" | grep -qi "unresolved"; then
+  echo "STATUS: resolved after openclaw doctor" | tee -a "$LOG"
+  exit 0
+else
+  echo "STATUS: PERSISTENT PROBLEM" | tee -a "$LOG"
+  echo "Log path: $LOG" | tee -a "$LOG"
+  echo "NOTIFY_REQUIRED: yes" | tee -a "$LOG"
+  exit 2
+fi

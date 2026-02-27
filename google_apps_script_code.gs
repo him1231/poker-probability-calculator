@@ -1,0 +1,3 @@
+function onOpen(){SpreadsheetApp.getUi().createMenu('Trip Tools').addItem('Open Map Sidebar','openMapSidebar').addItem('Export CSVs','exportCSVs').addToUi()}
+function openMapSidebar(){var html=HtmlService.createHtmlOutput('<p>Open map sidebar</p>');SpreadsheetApp.getUi().showSidebar(html)}nfunction exportCSVs(){var ss=SpreadsheetApp.getActive(); var sheets=['AI_Data','Human_View','Meta_Log']; sheets.forEach(function(name){var sh=ss.getSheetByName(name); if(sh){var csv=''; var data=sh.getDataRange().getValues(); data.forEach(function(r){csv+=r.map(function(c){return '"'+String(c).replace(/"/g,'""')+'"'}).join(',')+'
+'}); var file=DriveApp.createFile(name+'.csv',csv);}}); SpreadsheetApp.getUi().alert('Exported CSVs to your Drive root.');}
