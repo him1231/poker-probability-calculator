@@ -27,7 +27,31 @@ Three nodes. One covenant between logic, care, and human truth.
 
 ---
 
-## OpenClaw Integration (Required Setup)
+## Model Guard (Required)
+
+MAGI orchestration requires a capable model to reliably manage state, handle partial failures, tally votes, and generate structured reports.
+
+**Before running any MAGI deliberation, check the current session model:**
+
+| Model tier | Action |
+|---|---|
+| Full models (claude-sonnet, gpt-4o, gpt-5, o3, etc.) | Proceed normally |
+| Mini / lite models (gpt-5-mini, gpt-4o-mini, etc.) | **Spawn MAGI as a subagent with `model: "github-copilot/claude-sonnet-4.6"`** |
+
+**Implementation:**
+```
+If current model is a mini/lite variant:
+  → Use sessions_spawn with model="github-copilot/claude-sonnet-4.6" and task=<full MAGI request>
+  → Do NOT attempt to run MAGI orchestration directly in mini session
+Else:
+  → Run MAGI orchestration in current session
+```
+
+**Rationale:** Lightweight models can recognize MAGI structure but lack reliable orchestration capacity — they lose state across multi-node flows, expose internal process to users, and produce inconsistent tally logic. Routing to a capable model ensures deliberation quality.
+
+---
+
+
 
 MAGI runs natively on OpenClaw's subagent infrastructure. Before first use, ensure:
 
