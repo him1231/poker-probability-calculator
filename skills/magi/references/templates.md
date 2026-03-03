@@ -46,7 +46,7 @@ RESPONSE SCHEMA (produce exactly these labeled sections):
    - Confidence: Low/Medium/High (numeric range e.g. 60–75%)
    - Key risks / failure modes
 
-4. VERDICT: <APPROVE|REJECT|ABSTAIN>
+4. VERDICT: <APPROVE|CAVEATED|REJECT|ABSTAIN>
 
 5. RECOMMENDATION (1-3 sentences)
    Preferred option, why, and under what assumptions.

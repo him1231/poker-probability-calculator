@@ -157,4 +157,25 @@ When updating this document, prepend an entry in this format:
 - [ ] Adversarial red-team pipeline — build before production (see FUTURE_IMPROVEMENTS.md)
 - [ ] Real-time monitoring + rollback — build before production (see FUTURE_IMPROVEMENTS.md)
 
-*Document keeper: BALTHASAR-2 · Next review: after v2.1 milestone*
+---
+
+## Cycle 3 — v3.0 Enhancements (2026-02-27 → 2026-03-03)
+
+| Round | Topic | Verdict | Vote | Key Decision |
+|-------|-------|---------|------|--------------|
+| v3-R1 | Announce-chain pattern (non-blocking spawns) | APPROVE | 3-0 | Nodes spawn in parallel; orchestrator waits on auto-announce, not polling |
+| v3-R2 | Per-node model config (MELCHIOR→logic, BALTHASAR→balanced, CASPER→expressive) | APPROVE | 3-0 | Each node spawned with preferred model; fallback to orchestrator model |
+| v3-R3 | FAST+ mode (Stage 1 + lite Stage 2) | APPROVE | 3-0 | New mode between FAST and DEEP; 45s timeout; standard report |
+| v3-R4 | Mobile-friendly report format (emoji text) | APPROVE | 3-0 | Emoji report as default; ASCII box on request |
+| v3-R5 | Simplified confidence (3-tier: Low/Medium/High) | APPROVE | 3-0 | Replace Platt scaling with 3-tier + provenance |
+| v3-R6 | Expanded state machine (INIT→DONE explicit states) | APPROVE | 3-0 | State machine documented in SKILL.md |
+| v3-R7 | Expanded anti-patterns + ethical refusals | APPROVE | 3-0 | Life/medical/legal/identity questions → hard decline |
+| v3-R8 | CASPER emotional log (opt-in, 90-day decay) | APPROVE | 3-0 | Schema: date/topic_hash/valence/emotion/lesson; advisory only |
+| v3-R9 | Multilingual trigger expansion (Simplified Chinese, Japanese, Korean) | APPROVE | 3-0 | Full trigger table added to SKILL.md |
+| v3-R10 | Meta-review evidence delta requirement | APPROVE | 3-0 | Must supply concrete new evidence; vague disagreement rejected |
+| v3-R11 | Deadlock default posture (D then C) | APPROVE | 3-0 | Precautionary hold first; escalate to human second |
+| v3-R12 | Model guard + mini-to-capable routing | APPROVE | 3-0 | Mini models spawn subagent with claude-sonnet |
+
+*v3.0 total: 12 rounds — all 3-0 APPROVE*
+
+*Document keeper: BALTHASAR-2 · Next review: after v3.1 milestone*
