@@ -230,6 +230,18 @@ MAGI is a three-node deliberative AI architecture composed of MELCHIOR-1 (Scient
 | AI-readable README | Post-cycle | — |
 | Audit log | Post-cycle | — |
 | This living improvements tracker | Post-cycle | — |
+| Announce-chain pattern (non-blocking spawns, watchdog fallback) | v3.0 | v3-R1 |
+| Per-node model configuration (MELCHIOR/BALTHASAR/CASPER preferences) | v3.0 | v3-R2 |
+| FAST+ mode (lite Stage 2, 45s timeout) | v3.0 | v3-R3 |
+| Mobile-friendly report format (emoji text, ASCII on request) | v3.0 | v3-R4 |
+| Simplified confidence (3-tier + provenance, replaces Platt scaling) | v3.0 | v3-R5 |
+| Explicit state machine (INIT→DONE) | v3.0 | v3-R6 |
+| Expanded anti-patterns + ethical refusal list | v3.0 | v3-R7 |
+| CASPER emotional log (opt-in, schema defined, 90-day decay) | v3.0 | v3-R8 |
+| Multilingual triggers (Simplified Chinese, Japanese, Korean) | v3.0 | v3-R9 |
+| Meta-review evidence delta requirement | v3.0 | v3-R10 |
+| Deadlock default posture (D then C, sequential) | v3.0 | v3-R11 |
+| Model guard + mini-to-capable routing | v3.0 | v3-R12 |
 
 ---
 
