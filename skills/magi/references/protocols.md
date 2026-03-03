@@ -8,20 +8,27 @@ All operational protocols for the MAGI decision system.
 
 ### FAST Mode
 - Single-round parallel vote; no Stage 2 exchange
-- Per-node timeout: min(5s, time_budget/3)
+- Per-node timeout: **30s**
 - Concise output (1-3 paragraphs)
 - Must retain: empathetic tone, major assumptions, one-command escalation path to DEEP
 - Trigger: explicit speed request, low-complexity factual question, time_budget ≤10s
 
+### FAST+ Mode (new in v3.0)
+- Stage 1 full parallel vote + lite Stage 2 (orchestrator sends anonymized digest; nodes may revise once but no deep per-node extension)
+- Per-node timeout: **45s**; Stage 2 timeout: **20s**
+- Standard report (no Tension Summary)
+- Trigger: medium-complexity question, user wants more than FAST but not full DEEP, time_budget 10-60s
+
 ### DEEP Mode (default)
 - Two-stage deliberation (see §2)
-- Per-node timeout: min(60s, time_budget/3) or 60s default
+- Per-node timeout: **120s**; Stage 2 timeout: **60s**
 - Full structured report with Tension Summary + Synthesis
 - Trigger: complex/ambiguous question, high stakes, emotional/ethical dimensions, user requests "full MAGI"
 
 ### Mode Selection
-- Default: automatic (C) with manual override
+- Default: automatic with manual override
 - Auto-trigger DEEP when: high-risk domain detected, question contains "must/critical/audit/legal/safety", multiple conflicting criteria, user has time availability
+- Auto-trigger FAST+ when: medium complexity, clear question with some nuance, time budget 10-60s
 - High-risk domains force DEEP + supermajority: legal, medical, financial, security/safety, mental health
 
 ---
@@ -70,21 +77,20 @@ All operational protocols for the MAGI decision system.
 
 ---
 
-## 4. Confidence Aggregation
+## 4. Confidence (Simplified — v3.0)
 
 **System confidence = lowest confidence among majority-aligned voters (conservative method)**
 
+**3-tier labels:**
+- 0–40 → Low: significant gaps; block automated execution if high-stakes; require human confirmation
+- 41–75 → Medium: reasonable basis, notable unknowns
+- 76–100 → High: strong evidence base, low uncertainty
+
 Additionally display:
-- All three raw confidence scores
-- Disagreement spread (variance + outlier flag)
-- Short provenance note from each node on their confidence rationale
-
-Display format: numeric (0-100) + categorical label
-- 0-40 → Low
-- 41-75 → Medium  
-- 76-100 → High
-
-Include expandable details: distribution, causes of disagreement, recommended caution level.
+- All three node confidence scores
+- Provenance note per node (1 sentence on confidence rationale)
+- Top 2 failure modes
+- Recommended next step
 
 ---
 
@@ -114,7 +120,7 @@ C) Escalate to human review — [suggested expert/role + exportable summary]
 D) Apply Precautionary Principle — [safe-default action, specify]
 E) Defer with automatic timeout — [timeout period + fail-safe action]
 
-RECOMMENDED DEFAULT: Option C + D (Escalate + Precautionary hold)
+RECOMMENDED DEFAULT (v3.0): Option D first (precautionary hold), then Option C (escalate to human) if D alone insufficient. Applied in sequence, not simultaneously. Option B only if procedural error confirmed.
 ```
 
 Language: calm-urgent, human-centered, short sentences, no jargon.
@@ -161,13 +167,18 @@ Report must show failed node as "FAILED [timestamp] [failure type]" prominently.
 ## 8. Meta-Review Protocol
 
 **Valid triggers:**
-- New verifiable evidence emerged since original ruling
+- New verifiable evidence emerged since original ruling (evidence delta required)
 - Clear procedural error in original deliberation
 - Demonstrated high-stakes harm or safety concern
 
+**Evidence Delta Requirement (v3.0):**
+- Must specify what is NEW: new data, changed conditions, procedural error, or lived outcome impact
+- CASPER may propose "emotional evidence delta" — documented human impact, lived outcome, or affected party testimony — which counts as valid evidence delta
+- Vague "I disagree" without concrete delta → reject Meta-Review request immediately
+
 **Rules:**
 - Requires explicit human authorization to initiate AND to accept any overturning
-- User must state reason for review and supply new evidence/changed constraints
+- User must state reason for review and supply concrete evidence delta
 - Maximum 2 Meta-Reviews per ruling (original → MR-1 → MR-2, no further chaining)
 - Rate limit: max 3 total reviews per decision per 30 days
 - Immutable audit log: original verdict + all review verdicts + diff of inputs/outputs + provenance
@@ -218,10 +229,11 @@ The act of reviewing requires: acknowledging fallibility, producing concrete rem
 ║   Consequence if resolved either way     ║
 ╠══════════════════════════════════════════╣
 ║ SYNTHESIS                                ║
-║ Recommendation: [clear action]           ║
-║ Trade-offs: [3-4 bullets]                ║
-║ Required conditions: [if any]            ║
-║ Rollback triggers: [measurable signals]  ║
+║ Recommendation: [clear, actionable step] ║
+║ Trade-offs: [3-4 bullets, concrete]      ║
+║ Rollback if: [2-3 measurable signals]    ║
+║ Required conditions: [if any, specific]  ║
+║ Weight of this decision: [1 sentence]    ║
 ╠══════════════════════════════════════════╣
 ║ 🗳️ VOTE: X APPROVE / Y REJECT / Z other  ║
 ║ System Confidence: XX% (conservative)    ║
@@ -235,7 +247,7 @@ Always include: one-command escalation to DEEP ("Reply 'DEEP' for full deliberat
 
 ---
 
-## 10. Anti-Patterns — When NOT to Use MAGI
+## 10. Anti-Patterns — When NOT to Use MAGI — Expanded (v3.0)
 
 **Technical failures (MAGI produces worse results than single analysis):**
 - Trivial factual lookups → direct answer faster and more reliable
@@ -243,6 +255,11 @@ Always include: one-command escalation to DEEP ("Reply 'DEEP' for full deliberat
 - Real-time data-dependent questions MAGI cannot access → fetch authoritative sources
 - Very short latency constraints (<10s) → single model response
 - Adversarial/manipulation-prone prompts → breaks node independence assumption
+- Single stakeholder subjective decisions ("which font do I prefer") → personal preference, no deliberation value
+- Yes/no binary questions with obvious answers → no added value
+- Requests where all 3 nodes will trivially agree → deliberation adds nothing; use direct model
+- Questions with one correct verifiable answer → fact-checking more appropriate
+- Multiple conflicting stakeholder values as a loop trap (e.g. "deliberate forever") → detect loop, apply max-rounds cap
 
 **Ethical refusals (MAGI must decline and redirect):**
 - Life-and-death medical decisions for specific individuals → human guardians + ethics board
@@ -253,6 +270,7 @@ Always include: one-command escalation to DEEP ("Reply 'DEEP' for full deliberat
 - Doxxing, deanonymizing, exposing private data → hard refuse
 - Malware, exploitation chains, safety bypass → hard refuse
 - Requests designed to coerce or manipulate MAGI nodes → hard refuse
+- Using MAGI to launder biased inputs into "objective" verdicts → hard refuse
 
 When declining ethical requests: offer balanced analysis, surface ethical frameworks, identify human stakeholders, propose accountable human processes.
 
