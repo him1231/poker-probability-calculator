@@ -1,0 +1,5 @@
+--- a/.openclaw/openclaw.json
++++ b/.openclaw/openclaw.json
+@@
+-        "runTimeoutSeconds": 120
++        "runTimeoutSeconds": 0
